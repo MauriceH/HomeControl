@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">HomeControl</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="hello_world">Hello world!</string>
+
+    <string name="action_settings">Settings</string>
+
+
+
+    <string name="imageContentDescription">icon</string>
+
+
+    <string name="ControlItem_Tv_Template">TV</string>
+    <string name="ControlItem_Tv_Template_OFF">AUS</string>
+    <string name="ControlItem_Tv_Template_ON">AN</string>
+
+    <string name="ControlItem_Music_Template">Musik</string>
+    <string name="ControlItem_Music_Template_OFF">AUS</string>
+    <string name="ControlItem_Music_Template_MP3">MP3</string>
+    <string name="ControlItem_Music_Template_RADIO">Radio</string>
+
+
+    <string name="ControlGroupTitle_BedRoom">Schlafzimmer</string>
+    <string name="ControlItemTitle_BedRoom_MainLight">Licht</string>
+    <string name="ControlItemTitle_BedRoom_TV">TV</string>
+
+    <string name="ControlGroupTitle_DgMisc">Allgemein</string>
+    <string name="ControlItemTitle_DgMisc_LightChamber">Licht Abstellraum</string>
+    <string name="ControlItemTitle_DgMisc_LightFloor">Licht Flur</string>
+
+</resources>

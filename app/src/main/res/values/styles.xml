@@ -1,0 +1,64 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+
+    </style>
+
+    <style name="Activities" parent="AppTheme">
+        <item name="android:background" >@drawable/activity_back_repeat</item>
+    </style>
+
+    <style name="ControlGroupLayout" parent="AppTheme">
+        <item name="android:background">@color/ControlGroupBackground</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">3dp</item>
+        <item name="android:padding">5dp</item>
+
+    </style>
+
+
+    <style name="ControlGroupTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">3dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:color">@color/ControlGroupTitle</item>
+    </style>
+
+    <style name="ControlGroupDivider">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">@color/ControlGroupTitleDevider</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+
+    <style name="ControlGroupItem">
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+    </style>
+
+    <style name="ControlGroupItemText">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="ControlGroupItemIcon">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:contentDescription">@string/imageContentDescription</item>
+        <item name="android:layout_marginRight">12dp</item>
+    </style>
+
+
+</resources>
