@@ -11,12 +11,14 @@
         android:src="@drawable/tv"/>
 
     <TextView
+        android:id="@id/control_title"
         style="@style/ControlGroupItemText"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:text="@string/ControlItem_Tv_Template" />
 
     <Button
+        android:id="@id/control_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ControlItem_Tv_Template_OFF"

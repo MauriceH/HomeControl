@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    style="@style/ControlGroupLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TextView
+        android:id="@+id/controlGroup_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ControlGroupTitle_Template"
+        style="@style/ControlGroupTitle"/>
+
+    <View style="@style/ControlGroupDivider"/>
+
+
+</LinearLayout>

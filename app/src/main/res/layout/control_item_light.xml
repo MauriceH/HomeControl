@@ -6,17 +6,19 @@
         android:orientation="horizontal"
         style="@style/ControlGroupItem">
 
-    <ImageView
-        style="@style/ControlGroupItemIcon"
-        android:src="@drawable/bulb"/>
+        <ImageView
+            style="@style/ControlGroupItemIcon"
+            android:src="@drawable/bulb"/>
 
         <TextView
+            android:id="@+id/control_title"
             style="@style/ControlGroupItemText"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="ashdkjahskjdh" />
 
         <Button
+            android:id="@+id/control_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="AN"

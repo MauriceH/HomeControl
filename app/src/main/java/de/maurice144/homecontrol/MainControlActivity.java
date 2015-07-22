@@ -1,44 +1,150 @@
 package de.maurice144.homecontrol;
 
-import java.util.Locale;
-
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-import de.maurice144.homecontrol.FrontEnd.ControlBaseFragment;
-import de.maurice144.homecontrol.FrontEnd.Control_DG_Fragment;
-import de.maurice144.homecontrol.FrontEnd.Control_OG_Fragment;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import de.maurice144.homecontrol.Adapter.ControlPageAdapter;
+import de.maurice144.homecontrol.Data.ControlPage;
 
 
 public class MainControlActivity extends ActionBarActivity implements ActionBar.TabListener {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to as
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
-    SectionsPagerAdapter mSectionsPagerAdapter;
+    private String jsonData = "  {                                                     " +
+            "    \"pages\":[                                         " +
+            "        {                                               " +
+            "          \"id\":0,                                     " +
+            "          \"title\":\"Dachgeschoss\",                   " +
+            "          \"groups\":[                                  " +
+            "              {                                         " +
+            "                \"id\":0,                               " +
+            "                \"title\":\"Schlafzimmer\",             " +
+            "                \"controls\":[                          " +
+            "                    {                                   " +
+            "                      \"controltype\":\"light\",        " +
+            "                      \"id\":0,                         " +
+            "                      \"title\":\"Licht\"               " +
+            "                    },                                  " +
+            "                    {                                   " +
+            "                      \"controltype\":\"tv\",           " +
+            "                      \"id\":1,                         " +
+            "                      \"title\":\"Fernsehn\"            " +
+            "                    }                                   " +
+            "                  ]                                     " +
+            "              },                                        " +
+            "              {                                         " +
+            "                \"id\":1,                               " +
+            "                \"title\":\"Allgemein\",                " +
+            "                \"controls\":[                          " +
+            "                    {                                   " +
+            "                      \"controltype\":\"light\",        " +
+            "                      \"id\":2,                         " +
+            "                      \"title\":\"Ankleidelicht\"       " +
+            "                    },                                  " +
+            "                    {                                   " +
+            "                      \"controltype\":\"light\",        " +
+            "                      \"id\":3,                         " +
+            "                      \"title\":\"Flurlicht\"           " +
+            "                    }                                   " +
+            "                  ]                                     " +
+            "              }                                         " +
+            "            ]                                           " +
+            "        },                                              " +
+            "        {                                               " +
+            "          \"id\":1,                                     " +
+            "          \"title\":\"Obergeschoss\",                   " +
+            "          \"groups\":[                                  " +
+            "              {                                         " +
+            "                \"id\":0,                               " +
+            "                \"title\":\"Schlafzimmer\",             " +
+            "                \"controls\":[                          " +
+            "                    {                                   " +
+            "                      \"controltype\":\"light\",        " +
+            "                      \"id\":0,                         " +
+            "                      \"title\":\"Licht\"               " +
+            "                    },                                  " +
+            "                    {                                   " +
+            "                      \"controltype\":\"tv\",           " +
+            "                      \"id\":1,                         " +
+            "                      \"title\":\"Fernsehn\"            " +
+            "                    }                                   " +
+            "                  ]                                     " +
+            "              },                                        " +
+            "              {                                         " +
+            "                \"id\":1,                               " +
+            "                \"title\":\"Allgemein\",                " +
+            "                \"controls\":[                          " +
+            "                    {                                   " +
+            "                      \"controltype\":\"light\",        " +
+            "                      \"id\":2,                         " +
+            "                      \"title\":\"Ankleidelicht\"       " +
+            "                    },                                  " +
+            "                    {                                   " +
+            "                      \"controltype\":\"light\",        " +
+            "                      \"id\":3,                         " +
+            "                      \"title\":\"Flurlicht\"           " +
+            "                    }                                   " +
+            "                  ]                                     " +
+            "              }                                         " +
+            "            ]                                           " +
+            "        },                                              " +
+            "        {                                               " +
+            "          \"id\":2,                                     " +
+            "          \"title\":\"Erdgeschoss\",                    " +
+            "          \"groups\":[                                  " +
+            "              {                                         " +
+            "                \"id\":0,                               " +
+            "                \"title\":\"Schlafzimmer\",             " +
+            "                \"controls\":[                          " +
+            "                    {                                   " +
+            "                      \"controltype\":\"light\",        " +
+            "                      \"id\":0,                         " +
+            "                      \"title\":\"Licht\"               " +
+            "                    },                                  " +
+            "                    {                                   " +
+            "                      \"controltype\":\"tv\",           " +
+            "                      \"id\":1,                         " +
+            "                      \"title\":\"Fernsehn\"            " +
+            "                    }                                   " +
+            "                  ]                                     " +
+            "              },                                        " +
+            "              {                                         " +
+            "                \"id\":1,                               " +
+            "                \"title\":\"Allgemein\",                " +
+            "                \"controls\":[                          " +
+            "                    {                                   " +
+            "                      \"controltype\":\"light\",        " +
+            "                      \"id\":2,                         " +
+            "                      \"title\":\"Ankleidelicht\"       " +
+            "                    },                                  " +
+            "                    {                                   " +
+            "                      \"controltype\":\"light\",        " +
+            "                      \"id\":3,                         " +
+            "                      \"title\":\"Flurlicht\"           " +
+            "                    }                                   " +
+            "                  ]                                     " +
+            "              }                                         " +
+            "            ]                                           " +
+            "        }                                               " +
+            "      ]                                                 " +
+            "  }                                                     "  ;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
+
+
+    private ArrayList<ControlPage> pages;
+
+    ControlPageAdapter controlPageAdapter;
     ViewPager mViewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,18 +155,25 @@ public class MainControlActivity extends ActionBarActivity implements ActionBar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
+        JSONObject rootJsonElement;
+        try {
+            rootJsonElement = new JSONObject(jsonData);
+        } catch (Exception ex) {
+            rootJsonElement = null;
+            // NOTHING TO SHOW
+            finish();
+            return;
+        }
+
+
+        JSONArray jsonPages = rootJsonElement.optJSONArray("pages");
+        controlPageAdapter = new ControlPageAdapter(getSupportFragmentManager(),jsonPages);
+
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.setAdapter(controlPageAdapter);
 
-        // When swiping between different sections, select the corresponding
-        // tab. We can also use ActionBar.Tab#select() to do this if we have
-        // a reference to the Tab.
-        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 actionBar.setSelectedNavigationItem(position);
@@ -68,14 +181,10 @@ public class MainControlActivity extends ActionBarActivity implements ActionBar.
         });
 
         // For each of the sections in the app, add a tab to the action bar.
-        for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-            // Create a tab with text corresponding to the page title defined by
-            // the adapter. Also specify this Activity object, which implements
-            // the TabListener interface, as the callback (listener) for when
-            // this tab is selected.
+        for (int i = 0; i < controlPageAdapter.getCount(); i++) {
             actionBar.addTab(
                     actionBar.newTab()
-                            .setText(mSectionsPagerAdapter.getPageTitle(i))
+                            .setText(controlPageAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
     }
@@ -117,53 +226,6 @@ public class MainControlActivity extends ActionBarActivity implements ActionBar.
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
     }
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-        ControlBaseFragment[] fragments;
-        String[] titles;
-
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-            fragments = new ControlBaseFragment[3];
-            titles = new String[]{"Erdgeschoss","Obergeschoss","Dachgeschoss"};
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            ControlBaseFragment fragment = null;
-            if(fragments[position] == null) {
-                switch (position) {
-                    case 0:
-                        fragment = new Control_DG_Fragment();
-                        break;
-                    case 1:
-                        fragment = new Control_OG_Fragment();
-                        break;
-                    case 2:
-                        fragment = new Control_OG_Fragment();
-                        break;
-                }
-            }
-            return fragment;
-        }
-
-        @Override
-        public int getCount() {
-            // Show 3 total pages.
-            return 3;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return titles[position];
-        }
-    }
-
 
 
 }

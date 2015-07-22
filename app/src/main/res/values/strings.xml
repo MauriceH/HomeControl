@@ -24,12 +24,8 @@
     <string name="ControlItem_Music_Template_RADIO">Radio</string>
 
 
-    <string name="ControlGroupTitle_BedRoom">Schlafzimmer</string>
-    <string name="ControlItemTitle_BedRoom_MainLight">Licht</string>
-    <string name="ControlItemTitle_BedRoom_TV">TV</string>
+    <string name="ControlGroupTitle_Template">Gruppentitel</string>
+    <string name="title_activity_start">StartActivity</string>
 
-    <string name="ControlGroupTitle_DgMisc">Allgemein</string>
-    <string name="ControlItemTitle_DgMisc_LightChamber">Licht Abstellraum</string>
-    <string name="ControlItemTitle_DgMisc_LightFloor">Licht Flur</string>
 
 </resources>

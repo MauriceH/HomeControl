@@ -6,6 +6,10 @@
 
     </style>
 
+    <style name="HomeScreen" parent="AppTheme">
+        <item name="android:background">@drawable/startbackground</item>
+    </style>
+
     <style name="Activities" parent="AppTheme">
         <item name="android:background" >@drawable/activity_back_repeat</item>
     </style>
