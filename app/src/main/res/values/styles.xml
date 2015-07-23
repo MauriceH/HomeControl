@@ -1,9 +1,9 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat">
         <!-- Customize your theme here. -->
-
+        <item name="android:homeAsUpIndicator">@drawable/startscreen_settings</item>
     </style>
 
     <style name="HomeScreenTheme" parent="Theme.AppCompat.NoActionBar">
@@ -14,6 +14,7 @@
     <style name="HomeScreen" parent="AppTheme">
         <item name="android:background">@drawable/startbackground</item>
     </style>
+
 
     <style name="Activities" parent="AppTheme">
         <item name="android:background" >@drawable/startbackground</item>

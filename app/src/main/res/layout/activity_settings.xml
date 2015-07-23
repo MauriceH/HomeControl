@@ -5,9 +5,46 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="de.maurice144.homecontrol.FrontEnd.Activity.SettingsActivity"
-    style="@style/AppTheme">
+    style="@style/HomeScreen">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/whitetransparent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:onClick="onLoginClicked">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:layout_marginRight="0dp"
+                android:src="@drawable/settings_user"
+                android:onClick="onLoginClicked" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                android:clickable="true"
+                android:layout_marginLeft="-15dp"
+                android:layout_marginRight="5dp"
+                android:textSize="19dp"
+                android:text="Account-Einstellungen"
+                android:onClick="onLoginClicked" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

@@ -35,10 +35,12 @@ public class StartActivity extends ActionBarActivity {
 
     public void onMenu_StartControl_Click(View v) {
         startActivity(new Intent(this, MainControlActivity.class));
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 
     public void onMenu_StartSettings_Click(View v) {
         startActivity(new Intent(this, SettingsActivity.class));
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 
 
