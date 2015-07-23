@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import org.json.JSONObject;
@@ -22,7 +23,7 @@ public class ControlGroupItem_Light extends ControlGroupItemBase {
     public static final String KEY_CONTROL_TYPE = "LIGHT";
 
     private TextView title;
-    private Button button;
+    private Switch button;
 
     public ControlGroupItem_Light(JSONObject jsonObject,Context context) {
         super(jsonObject, ContextCompat.getDrawable(context, R.drawable.bulb));
@@ -35,7 +36,7 @@ public class ControlGroupItem_Light extends ControlGroupItemBase {
         title = (TextView)layout.findViewById(R.id.control_title);
         title.setText(getTitle());
 
-        button = (Button)layout.findViewById(R.id.control_switch);
+        button = (Switch)layout.findViewById(R.id.control_switch);
 
         return layout;
     }

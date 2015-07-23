@@ -38,6 +38,10 @@ public class StartActivity extends ActionBarActivity {
         startActivity(new Intent(this, MainControlActivity.class));
     }
 
+    public void onMenu_StartSettings_Click(View v) {
+        startActivity(new Intent(this, SettingsActivity.class));
+    }
+
 
 
 }

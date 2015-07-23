@@ -17,11 +17,14 @@
             android:layout_weight="1"
             android:text="ashdkjahskjdh" />
 
-        <Button
+        <Switch
             android:id="@+id/control_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AN"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
             />
 
     </LinearLayout>

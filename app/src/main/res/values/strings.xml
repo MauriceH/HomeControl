@@ -26,6 +26,7 @@
 
     <string name="ControlGroupTitle_Template">Gruppentitel</string>
     <string name="title_activity_start">HomeControl</string>
+    <string name="title_activity_settings">Einstellungen</string>
 
 
 </resources>

@@ -37,7 +37,7 @@ public class MainControlActivity extends ActionBarActivity implements ActionBar.
             "                    {                                   " +
             "                      \"controltype\":\"tv\",           " +
             "                      \"id\":1,                         " +
-            "                      \"title\":\"Fernsehn\"            " +
+            "                      \"title\":\"Fernseher\"           " +
             "                    }                                   " +
             "                  ]                                     " +
             "              },                                        " +
@@ -75,7 +75,7 @@ public class MainControlActivity extends ActionBarActivity implements ActionBar.
             "                    {                                   " +
             "                      \"controltype\":\"tv\",           " +
             "                      \"id\":1,                         " +
-            "                      \"title\":\"Fernsehn\"            " +
+            "                      \"title\":\"Fernseher\"           " +
             "                    }                                   " +
             "                  ]                                     " +
             "              },                                        " +
@@ -86,7 +86,7 @@ public class MainControlActivity extends ActionBarActivity implements ActionBar.
             "                    {                                   " +
             "                      \"controltype\":\"light\",        " +
             "                      \"id\":2,                         " +
-            "                      \"title\":\"Ankleidelicht\"       " +
+            "                      \"title\":\"Licht Ankleiderzimmer\" " +
             "                    },                                  " +
             "                    {                                   " +
             "                      \"controltype\":\"light\",        " +

@@ -69,13 +69,15 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/StartScreen_box">
+            style="@style/StartScreen_box"
+            android:onClick="onMenu_StartSettings_Click">
 
             <ImageButton
                 android:layout_width="125dp"
                 android:layout_height="101dp"
                 style="@style/StartScreen_Image"
-                android:src="@drawable/startscreen_settings" />
+                android:src="@drawable/startscreen_settings"
+                android:onClick="onMenu_StartSettings_Click" />
 
         </LinearLayout>
 
