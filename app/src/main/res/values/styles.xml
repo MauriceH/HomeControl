@@ -6,12 +6,17 @@
 
     </style>
 
+    <style name="HomeScreenTheme" parent="Theme.AppCompat.NoActionBar">
+
+    </style>
+
+
     <style name="HomeScreen" parent="AppTheme">
         <item name="android:background">@drawable/startbackground</item>
     </style>
 
     <style name="Activities" parent="AppTheme">
-        <item name="android:background" >@drawable/activity_back_repeat</item>
+        <item name="android:background" >@drawable/startbackground</item>
     </style>
 
     <style name="ControlGroupLayout" parent="AppTheme">
@@ -63,6 +68,24 @@
         <item name="android:contentDescription">@string/imageContentDescription</item>
         <item name="android:layout_marginRight">12dp</item>
     </style>
+
+    <style name="StartScreen_Image">
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:scaleType">fitEnd</item>
+    </style>
+
+    <style name="StartScreen_box">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@drawable/startmenu_item_selector</item>
+        <item name="android:clickable">true</item>
+        <item name="android:addStatesFromChildren">true</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
 
 
 </resources>

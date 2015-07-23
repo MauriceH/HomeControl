@@ -9,13 +9,79 @@
     tools:context="de.maurice144.homecontrol.FrontEnd.StartActivity"
     style="@style/HomeScreen">
 
-    <TextView
+    <ImageView
+        android:id="@+id/StartScreenLogo"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="45dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/home_control_logo"
+        android:scaleType="centerInside" />
+
+
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Asdad"
-        android:textSize="40sp"
-        android:layout_marginTop="30dp"
-        style="@android:style/TextAppearance.DeviceDefault.Large" />
+        android:layout_below="@id/StartScreenLogo"
+        android:columnCount="2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:rowCount="2">
+
+        <LinearLayout
+            style="@style/StartScreen_box"
+            android:onClick="onMenu_StartControl_Click"
+            >
+
+            <ImageButton
+                android:id="@+id/startscreen_menu_control"
+                android:layout_width="99dp"
+                android:layout_height="101dp"
+                style="@style/StartScreen_Image"
+                android:onClick="onMenu_StartControl_Click"
+                android:src="@drawable/startscreen_steuerung" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/StartScreen_box">
+
+            <ImageButton
+                android:layout_width="56dp"
+                android:layout_height="96dp"
+                style="@style/StartScreen_Image"
+                android:src="@drawable/startscreen_music"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/StartScreen_box">
+
+            <ImageButton
+                android:layout_width="75dp"
+                android:layout_height="96dp"
+                style="@style/StartScreen_Image"
+                android:src="@drawable/startscreen_timer" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/StartScreen_box">
+
+            <ImageButton
+                android:layout_width="125dp"
+                android:layout_height="101dp"
+                style="@style/StartScreen_Image"
+                android:src="@drawable/startscreen_settings" />
+
+        </LinearLayout>
+
+    </GridLayout>
+
+
 
 
 

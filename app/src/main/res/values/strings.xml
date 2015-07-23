@@ -25,7 +25,7 @@
 
 
     <string name="ControlGroupTitle_Template">Gruppentitel</string>
-    <string name="title_activity_start">StartActivity</string>
+    <string name="title_activity_start">HomeControl</string>
 
 
 </resources>
