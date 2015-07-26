@@ -47,13 +47,15 @@
 
 
         <LinearLayout
-            style="@style/StartScreen_box">
+            style="@style/StartScreen_box"
+            android:onClick="onMenu_StartMusic_Click">
 
             <ImageButton
                 android:layout_width="56dp"
                 android:layout_height="96dp"
                 style="@style/StartScreen_Image"
-                android:src="@drawable/startscreen_music"/>
+                android:src="@drawable/startscreen_music"
+                android:onClick="onMenu_StartMusic_Click" />
 
         </LinearLayout>
 

@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -28,6 +29,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.maurice144.homecontrol.Data.LocalSettings;
 import de.maurice144.homecontrol.R;
 
 /**
@@ -40,7 +42,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
      * TODO: remove after connecting to a real authentication system.
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
+            "a@b.com:12345", "bar@example.com:world"
     };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -272,12 +274,19 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mEmail)) {
                     // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
+
+                    if(pieces[1].equals(mPassword)) {
+                        LocalSettings settings = new LocalSettings(LoginActivity.this);
+                        settings.setNewActivation("ABC",3,"Maurice Hessing");
+                        settings.Save();
+                        return true;
+                    }
                 }
             }
 
+
             // TODO: register the new account here.
-            return true;
+            return false;
         }
 
         @Override
@@ -286,6 +295,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             showProgress(false);
 
             if (success) {
+                startActivity(new Intent(LoginActivity.this,StartActivity.class));
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
