@@ -19,6 +19,7 @@ public class LocalSettings {
     private String deviceToken;
     private String userFullName;
     private long userId;
+    private String gcmToken;
 
 
 
@@ -34,6 +35,7 @@ public class LocalSettings {
         deviceToken  = sharedPref.getString("deviceToken",null);
         userFullName = sharedPref.getString("userFullName",null);
         userId = sharedPref.getLong("userId",-1);
+        gcmToken = sharedPref.getString("gcmtoken",null);
     }
 
     public void Save() {
@@ -43,7 +45,8 @@ public class LocalSettings {
         editor.putString("deviceToken",this.deviceToken);
         editor.putString("userFullName",this.userFullName);
         editor.putLong("userId", this.userId);
-        editor.commit();
+        editor.putString("gcmtoken",this.gcmToken);
+        editor.apply();
     }
 
     public boolean isLoggedIn() {
@@ -64,13 +67,20 @@ public class LocalSettings {
     }
 
 
+    public String getGcmToken() {
+        return gcmToken;
+    }
+
+    public void setGcmToken(String gcmToken) {
+        this.gcmToken = gcmToken;
+    }
+
+
     public void setNewActivation(String deviceToken, long userId, String userFullName) {
         this.deviceToken = deviceToken;
         this.userId = userId;
         this.userFullName = userFullName;
     }
-
-
 
 
 

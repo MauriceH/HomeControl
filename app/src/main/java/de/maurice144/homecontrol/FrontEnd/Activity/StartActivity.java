@@ -5,17 +5,26 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.iid.InstanceID;
+
 import de.maurice144.homecontrol.Data.LocalSettings;
 import de.maurice144.homecontrol.FrontEnd.Activity.SettingsActivity;
+import de.maurice144.homecontrol.GCM.RegistrationIntentService;
 import de.maurice144.homecontrol.MainControlActivity;
 import de.maurice144.homecontrol.R;
 
 public class StartActivity extends ActionBarActivity {
+
+    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+    private static final String TAG = "StartActivity";
 
     LocalSettings settings;
 
@@ -33,6 +42,13 @@ public class StartActivity extends ActionBarActivity {
                 return false;
             }
         });
+
+
+        if (checkPlayServices()) {
+            // Start IntentService to register this application with GCM.
+            Intent intent = new Intent(this, RegistrationIntentService.class);
+            startService(intent);
+        }
 
 
     }
@@ -91,6 +107,21 @@ public class StartActivity extends ActionBarActivity {
             return true;
         }
         return false;
+    }
+
+
+    private boolean checkPlayServices() {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                GooglePlayServicesUtil.getErrorDialog(resultCode, this,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
+            } else {
+                Log.i(TAG, "This device is not supported.");
+            }
+            return false;
+        }
+        return true;
     }
 
 

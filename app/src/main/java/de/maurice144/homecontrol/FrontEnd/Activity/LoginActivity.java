@@ -276,6 +276,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     // Account exists, return true if the password matches.
 
                     if(pieces[1].equals(mPassword)) {
+
                         LocalSettings settings = new LocalSettings(LoginActivity.this);
                         settings.setNewActivation("ABC",3,"Maurice Hessing");
                         settings.Save();
