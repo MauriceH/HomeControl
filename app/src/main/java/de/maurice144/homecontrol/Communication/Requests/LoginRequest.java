@@ -5,6 +5,17 @@ package de.maurice144.homecontrol.Communication.Requests;
  */
 public class LoginRequest extends DefaultRequest {
 
+
+    public LoginRequest() {
+        super();
+    }
+
+    public LoginRequest(String username, String password) {
+        super();
+        setUsername(username);
+        setPassword(password);
+    }
+
     public void setUsername(String username) {
         try {
             data.put("user", username);

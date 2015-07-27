@@ -1,4 +1,4 @@
-package de.maurice144.homecontrol;
+package de.maurice144.homecontrol.FrontEnd.Activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import de.maurice144.homecontrol.Adapter.ControlPageAdapter;
 import de.maurice144.homecontrol.Data.ControlPage;
+import de.maurice144.homecontrol.R;
 
 
 public class MainControlActivity extends ActionBarActivity implements ActionBar.TabListener {

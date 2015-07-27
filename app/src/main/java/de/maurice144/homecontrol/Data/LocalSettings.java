@@ -3,8 +3,6 @@ package de.maurice144.homecontrol.Data;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import de.maurice144.homecontrol.MainControlActivity;
-
 /**
  * Created by mhessing on 24.07.2015.
  */
@@ -53,6 +51,11 @@ public class LocalSettings {
         return this.deviceToken != null;
     }
 
+    public boolean isGcmRegistered() {
+        return this.gcmToken != null;
+    }
+
+
 
     public String getDeviceToken() {
         return deviceToken;
@@ -76,10 +79,17 @@ public class LocalSettings {
     }
 
 
+
     public void setNewActivation(String deviceToken, long userId, String userFullName) {
         this.deviceToken = deviceToken;
         this.userId = userId;
         this.userFullName = userFullName;
+    }
+
+    public void clearAccountData() {
+        this.deviceToken = null;
+        this.userId = -1;
+        this.userFullName = null;
     }
 
 

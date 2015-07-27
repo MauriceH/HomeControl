@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.SecureRandom;
 
@@ -23,8 +24,8 @@ import javax.net.ssl.X509TrustManager;
  */
 public class RestApiConnection {
 
-    private static final String CONST_HOSTNAME = "service.valid2go.de";
-    private static final String CONST_SERVICEPATH = "https://" + CONST_HOSTNAME + "/MobileApi/v1.2/";
+    private static final String CONST_HOSTNAME = "familiehessing.de";
+    private static final String CONST_SERVICEPATH = "http://" + CONST_HOSTNAME + "/homecontrol/";
 
     private static final String CONTENT_TYPE_JSON = "application/json";
     private static final String CONTENT_TYPE_BYTES = "binary/octet-stream";
@@ -33,8 +34,8 @@ public class RestApiConnection {
     /**
      * Initialisierung der Dienstverbindung auf HTTPS-Basis
      */
-    private HttpsURLConnection initConnection(String pUrl, String requestValue) throws Exception {
-        HttpsURLConnection con;
+    private HttpURLConnection initConnection(String pUrl, String requestValue) throws Exception {
+        HttpURLConnection con;
 
         SSLContext sslContext = SSLContext.getInstance("TLS");
 
@@ -42,15 +43,15 @@ public class RestApiConnection {
         sslContext.init(null, tm, new SecureRandom());
 
 
-        con = (HttpsURLConnection) (new URL(CONST_SERVICEPATH + pUrl)).openConnection();
-        con.setSSLSocketFactory(sslContext.getSocketFactory());
+        con = (HttpURLConnection) (new URL(CONST_SERVICEPATH + pUrl)).openConnection();
+        /*con.setSSLSocketFactory(sslContext.getSocketFactory());
         con.setHostnameVerifier(new HostnameVerifier() {
             public boolean verify(String hostname, SSLSession session) {
                 HostnameVerifier hostnameVerifier =
                         HttpsURLConnection.getDefaultHostnameVerifier();
                 return hostnameVerifier.verify(CONST_HOSTNAME, session);
             }
-        });
+        });*/
 
 
         con.setRequestProperty("CONTENT-TYPE", requestValue);
@@ -84,7 +85,7 @@ public class RestApiConnection {
     private String getResultForPostMethod(String pUrl, byte[] bytes, String contentType) throws Exception {
         OutputStream os = null;
         InputStream is = null;
-        HttpsURLConnection con = null;
+        HttpURLConnection con = null;
         StringBuilder builder = new StringBuilder();
 
         /** Initialisierung der Dienstverbindung */

@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.google.android.gms.gcm.GcmListenerService;
 
+import de.maurice144.homecontrol.Data.LocalSettings;
+
 /**
  * Created by mhessing on 27.07.2015.
  */
@@ -12,24 +14,24 @@ public class CloudListenerService extends GcmListenerService {
 
     private static final String TAG = "CloudListenerService";
 
+    private static final int MSG_TYPE_ID_LOGOFF = 1;
+
     @Override
     public void onMessageReceived(String from, Bundle data) {
-        String message = data.getString("message");
-        Log.d(TAG, "From: " + from);
-        Log.d(TAG, "Message: " + message);
+        int msgTypeId = Integer.valueOf(data.getString("mid")).intValue();
 
-        /**
-         * Production applications would usually process the message here.
-         * Eg: - Syncing with server.
-         *     - Store message in local database.
-         *     - Update UI.
-         */
+        switch (msgTypeId) {
+            case MSG_TYPE_ID_LOGOFF:
+                logOffUser();
+                break;
+        }
 
-        /**
-         * In some cases it may be useful to show a notification indicating to the user
-         * that a message was received.
-         */
-        //sendNotification(message);
+    }
+
+    private void logOffUser() {
+        LocalSettings settings = new LocalSettings(this);
+        settings.clearAccountData();
+        settings.Save();
     }
 
 }

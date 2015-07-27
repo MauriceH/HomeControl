@@ -9,7 +9,7 @@ import de.maurice144.homecontrol.Communication.Requests.DefaultRequest;
  */
 public class DefaultResult {
 
-    private JSONObject data;
+    protected JSONObject data;
 
     public DefaultResult(JSONObject data) {
         this.data = data;

@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import de.maurice144.homecontrol.Communication.Requests.LoginRequest;
 import de.maurice144.homecontrol.Communication.Results.DefaultResult;
+import de.maurice144.homecontrol.Communication.Results.LoginResult;
 import de.maurice144.homecontrol.Data.LocalSettings;
 
 /**
@@ -30,11 +31,11 @@ public class WebApi {
     }
 
 
-    public DefaultResult Login(LoginRequest request) throws Exception {
-        DefaultResult actResult = null;
-        JSONObject jsonResult = restcon.sendPostData("login", request.getJsonData());
+    public LoginResult Login(LoginRequest request) throws Exception {
+        LoginResult actResult = null;
+        JSONObject jsonResult = restcon.sendPostData("login.php", request.getJsonData());
         if (jsonResult != null && !jsonResult.toString().equals(""))
-            actResult = new DefaultResult(jsonResult);
+            actResult = new LoginResult(jsonResult);
         return actResult;
     }
 
