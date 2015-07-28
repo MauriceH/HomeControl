@@ -44,6 +44,9 @@ public class ControlGroup {
                     if(objType.equalsIgnoreCase(ControlGroupItem_Tv.KEY_CONTROL_TYPE)) {
                         controlGroupItemBase = new ControlGroupItem_Tv(jsonObj,context);
                     }
+                    if(objType.equalsIgnoreCase(ControlGroupItem_UpDown.KEY_CONTROL_TYPE)) {
+                        controlGroupItemBase = new ControlGroupItem_Tv(jsonObj,context);
+                    }
 
                     this.getControls().add(controlGroupItemBase);
                 }

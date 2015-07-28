@@ -4,7 +4,9 @@ import android.content.Context;
 
 import org.json.JSONObject;
 
+import de.maurice144.homecontrol.Communication.Requests.DefaultRequest;
 import de.maurice144.homecontrol.Communication.Requests.LoginRequest;
+import de.maurice144.homecontrol.Communication.Results.ControlStructureResult;
 import de.maurice144.homecontrol.Communication.Results.DefaultResult;
 import de.maurice144.homecontrol.Communication.Results.LoginResult;
 import de.maurice144.homecontrol.Data.LocalSettings;
@@ -31,6 +33,8 @@ public class WebApi {
     }
 
 
+
+
     public LoginResult Login(LoginRequest request) throws Exception {
         LoginResult actResult = null;
         JSONObject jsonResult = restcon.sendPostData("login.php", request.getJsonData());
@@ -38,5 +42,17 @@ public class WebApi {
             actResult = new LoginResult(jsonResult);
         return actResult;
     }
+
+
+
+    public ControlStructureResult ControlStructure(DefaultRequest request) throws Exception {
+        ControlStructureResult cstResult = null;
+        JSONObject jsonResult = restcon.sendPostData("controldata.php", request.getJsonData());
+        if (jsonResult != null && !jsonResult.toString().equals(""))
+            cstResult = new ControlStructureResult(jsonResult);
+        return cstResult;
+    }
+
+
 
 }

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
+import de.maurice144.homecontrol.Communication.SynchronisationService;
 import de.maurice144.homecontrol.Data.LocalSettings;
 import de.maurice144.homecontrol.GCM.RegistrationIntentService;
 import de.maurice144.homecontrol.R;
@@ -53,6 +54,10 @@ public class StartActivity extends ActionBarActivity {
 
     public void onMenu_StartControl_Click(View v) {
         if(!checkLogon()) return;
+        if(!settings.isStructureAvailable()) {
+            displayNoStructureDialog(settings);
+            return;
+        }
         startActivity(new Intent(this, MainControlActivity.class));
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
@@ -125,6 +130,35 @@ public class StartActivity extends ActionBarActivity {
     private LocalSettings getSettings() {
         return new LocalSettings(this);
     }
+
+
+
+    private void displayNoStructureDialog(LocalSettings settings) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        // set title
+        alertDialogBuilder.setTitle("Keine Strukturdaten");
+        // set dialog mesage
+        alertDialogBuilder
+                .setMessage(getString(R.string.nostructure_text))
+                .setCancelable(false)
+                .setPositiveButton("Synchronisieren", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        startService(SynchronisationService.getServiceStartIntentByMode(StartActivity.this, SynchronisationService.STARTMODE_SyncStructure));
+                    }
+                })
+                .setNegativeButton("Beenden", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        StartActivity.this.finish();
+                    }
+                });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
+
 
 
 

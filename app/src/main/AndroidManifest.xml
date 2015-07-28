@@ -64,6 +64,8 @@
 
         <service android:name=".GCM.RegistrationIntentService" />
 
+        <service android:name=".Communication.SynchronisationService" />
+
 
     </application>
 

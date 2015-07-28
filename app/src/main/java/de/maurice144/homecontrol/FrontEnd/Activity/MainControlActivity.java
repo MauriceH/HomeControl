@@ -1,5 +1,8 @@
 package de.maurice144.homecontrol.FrontEnd.Activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.FragmentTransaction;
@@ -14,131 +17,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import de.maurice144.homecontrol.Adapter.ControlPageAdapter;
+import de.maurice144.homecontrol.Communication.SynchronisationService;
 import de.maurice144.homecontrol.Data.ControlPage;
+import de.maurice144.homecontrol.Data.ControlStructureJsonFile;
+import de.maurice144.homecontrol.Data.LocalSettings;
 import de.maurice144.homecontrol.R;
 
 
 public class MainControlActivity extends ActionBarActivity implements ActionBar.TabListener {
-
-    private String jsonData = "  {                                                     " +
-            "    \"pages\":[                                         " +
-            "        {                                               " +
-            "          \"id\":0,                                     " +
-            "          \"title\":\"Dachgeschoss\",                   " +
-            "          \"groups\":[                                  " +
-            "              {                                         " +
-            "                \"id\":0,                               " +
-            "                \"title\":\"Schlafzimmer\",             " +
-            "                \"controls\":[                          " +
-            "                    {                                   " +
-            "                      \"controltype\":\"light\",        " +
-            "                      \"id\":0,                         " +
-            "                      \"title\":\"Licht\"               " +
-            "                    },                                  " +
-            "                    {                                   " +
-            "                      \"controltype\":\"tv\",           " +
-            "                      \"id\":1,                         " +
-            "                      \"title\":\"Fernseher\"           " +
-            "                    }                                   " +
-            "                  ]                                     " +
-            "              },                                        " +
-            "              {                                         " +
-            "                \"id\":1,                               " +
-            "                \"title\":\"Allgemein\",                " +
-            "                \"controls\":[                          " +
-            "                    {                                   " +
-            "                      \"controltype\":\"light\",        " +
-            "                      \"id\":2,                         " +
-            "                      \"title\":\"Ankleidelicht\"       " +
-            "                    },                                  " +
-            "                    {                                   " +
-            "                      \"controltype\":\"light\",        " +
-            "                      \"id\":3,                         " +
-            "                      \"title\":\"Flurlicht\"           " +
-            "                    }                                   " +
-            "                  ]                                     " +
-            "              }                                         " +
-            "            ]                                           " +
-            "        },                                              " +
-            "        {                                               " +
-            "          \"id\":1,                                     " +
-            "          \"title\":\"Obergeschoss\",                   " +
-            "          \"groups\":[                                  " +
-            "              {                                         " +
-            "                \"id\":0,                               " +
-            "                \"title\":\"Schlafzimmer\",             " +
-            "                \"controls\":[                          " +
-            "                    {                                   " +
-            "                      \"controltype\":\"light\",        " +
-            "                      \"id\":0,                         " +
-            "                      \"title\":\"Licht\"               " +
-            "                    },                                  " +
-            "                    {                                   " +
-            "                      \"controltype\":\"tv\",           " +
-            "                      \"id\":1,                         " +
-            "                      \"title\":\"Fernseher\"           " +
-            "                    }                                   " +
-            "                  ]                                     " +
-            "              },                                        " +
-            "              {                                         " +
-            "                \"id\":1,                               " +
-            "                \"title\":\"Allgemein\",                " +
-            "                \"controls\":[                          " +
-            "                    {                                   " +
-            "                      \"controltype\":\"light\",        " +
-            "                      \"id\":2,                         " +
-            "                      \"title\":\"Licht Ankleiderzimmer\" " +
-            "                    },                                  " +
-            "                    {                                   " +
-            "                      \"controltype\":\"light\",        " +
-            "                      \"id\":3,                         " +
-            "                      \"title\":\"Flurlicht\"           " +
-            "                    }                                   " +
-            "                  ]                                     " +
-            "              }                                         " +
-            "            ]                                           " +
-            "        },                                              " +
-            "        {                                               " +
-            "          \"id\":2,                                     " +
-            "          \"title\":\"Erdgeschoss\",                    " +
-            "          \"groups\":[                                  " +
-            "              {                                         " +
-            "                \"id\":0,                               " +
-            "                \"title\":\"Schlafzimmer\",             " +
-            "                \"controls\":[                          " +
-            "                    {                                   " +
-            "                      \"controltype\":\"light\",        " +
-            "                      \"id\":0,                         " +
-            "                      \"title\":\"Licht\"               " +
-            "                    },                                  " +
-            "                    {                                   " +
-            "                      \"controltype\":\"tv\",           " +
-            "                      \"id\":1,                         " +
-            "                      \"title\":\"Fernsehn\"            " +
-            "                    }                                   " +
-            "                  ]                                     " +
-            "              },                                        " +
-            "              {                                         " +
-            "                \"id\":1,                               " +
-            "                \"title\":\"Allgemein\",                " +
-            "                \"controls\":[                          " +
-            "                    {                                   " +
-            "                      \"controltype\":\"light\",        " +
-            "                      \"id\":2,                         " +
-            "                      \"title\":\"Ankleidelicht\"       " +
-            "                    },                                  " +
-            "                    {                                   " +
-            "                      \"controltype\":\"light\",        " +
-            "                      \"id\":3,                         " +
-            "                      \"title\":\"Flurlicht\"           " +
-            "                    }                                   " +
-            "                  ]                                     " +
-            "              }                                         " +
-            "            ]                                           " +
-            "        }                                               " +
-            "      ]                                                 " +
-            "  }                                                     "  ;
-
 
 
     private ArrayList<ControlPage> pages;
@@ -152,14 +38,19 @@ public class MainControlActivity extends ActionBarActivity implements ActionBar.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_control);
 
+
+
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 
+
+
         JSONObject rootJsonElement;
         try {
-            rootJsonElement = new JSONObject(jsonData);
+            ControlStructureJsonFile controlStructureJsonFile = ControlStructureJsonFile.LoadFile();
+            rootJsonElement = controlStructureJsonFile.getObj();
         } catch (Exception ex) {
             rootJsonElement = null;
             // NOTHING TO SHOW
@@ -189,6 +80,8 @@ public class MainControlActivity extends ActionBarActivity implements ActionBar.
                             .setTabListener(this));
         }
     }
+
+
 
 
     @Override

@@ -19,6 +19,8 @@ public class LocalSettings {
     private long userId;
     private String gcmToken;
 
+    private boolean structureAvailable;
+
 
 
     public LocalSettings(Context context) {
@@ -32,8 +34,9 @@ public class LocalSettings {
 
         deviceToken  = sharedPref.getString("deviceToken",null);
         userFullName = sharedPref.getString("userFullName",null);
-        userId = sharedPref.getLong("userId",-1);
-        gcmToken = sharedPref.getString("gcmtoken",null);
+        userId = sharedPref.getLong("userId", -1);
+        gcmToken = sharedPref.getString("gcmtoken", null);
+        structureAvailable = sharedPref.getBoolean("structureavailable",false);
     }
 
     public void Save() {
@@ -43,9 +46,12 @@ public class LocalSettings {
         editor.putString("deviceToken",this.deviceToken);
         editor.putString("userFullName",this.userFullName);
         editor.putLong("userId", this.userId);
-        editor.putString("gcmtoken",this.gcmToken);
+        editor.putString("gcmtoken", this.gcmToken);
+        editor.putBoolean("structureavailable",this.structureAvailable);
         editor.apply();
     }
+
+
 
     public boolean isLoggedIn() {
         return this.deviceToken != null;
@@ -55,6 +61,13 @@ public class LocalSettings {
         return this.gcmToken != null;
     }
 
+    public boolean isStructureAvailable() {
+        return this.structureAvailable;
+    }
+
+    public void setStructureAvailable(boolean structureAvailable) {
+        this.structureAvailable = structureAvailable;
+    }
 
 
     public String getDeviceToken() {

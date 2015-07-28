@@ -29,6 +29,7 @@
     <string name="title_activity_start">HomeControl</string>
     <string name="title_activity_settings">Einstellungen</string>
     <string name="login_text">Für diese APP benötigen Sie einen Home-Control Account. Bitte melden Sie sich mit Ihren Zugangsdaten an.</string>
+    <string name="nostructure_text">Mit Ihrem Account ist noch keine Synchronisierung durchgeführt worden. Möchten Sie die Synchronisierung nun ausführen?</string>
 
 
 </resources>
