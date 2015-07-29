@@ -23,7 +23,7 @@ public class ControlGroup {
     protected ViewGroup viewGroup;
     private TextView titleTextView;
 
-    public ControlGroup(JSONObject jsonObject,Context context) {
+    public ControlGroup(JSONObject jsonObject) {
         this.data = jsonObject;
         this.controls = new ArrayList<ControlGroupItemBase>();
 
@@ -39,13 +39,13 @@ public class ControlGroup {
                     controlGroupItemBase = null;
 
                     if(objType.equalsIgnoreCase(ControlGroupItem_Light.KEY_CONTROL_TYPE)) {
-                        controlGroupItemBase = new ControlGroupItem_Light(jsonObj,context);
+                        controlGroupItemBase = new ControlGroupItem_Light(jsonObj);
                     }
                     if(objType.equalsIgnoreCase(ControlGroupItem_Tv.KEY_CONTROL_TYPE)) {
-                        controlGroupItemBase = new ControlGroupItem_Tv(jsonObj,context);
+                        controlGroupItemBase = new ControlGroupItem_Tv(jsonObj);
                     }
                     if(objType.equalsIgnoreCase(ControlGroupItem_UpDown.KEY_CONTROL_TYPE)) {
-                        controlGroupItemBase = new ControlGroupItem_Tv(jsonObj,context);
+                        controlGroupItemBase = new ControlGroupItem_UpDown(jsonObj);
                     }
 
                     this.getControls().add(controlGroupItemBase);

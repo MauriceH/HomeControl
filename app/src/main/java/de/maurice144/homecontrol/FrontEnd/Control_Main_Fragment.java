@@ -65,5 +65,11 @@ public class Control_Main_Fragment extends ControlBaseFragment {
         super.onDestroy();
         Log.e("Fragement destroyed",String.valueOf(page.getId()));
     }
+
+
+    public ControlPage getPage() {
+        return this.page;
+    }
+
 }
 

@@ -1,6 +1,7 @@
 package de.maurice144.homecontrol.Data;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -22,8 +23,8 @@ public class ControlGroupItem_Tv  extends ControlGroupItemBase {
     private TextView title;
     private Button button;
 
-    public ControlGroupItem_Tv(JSONObject jsonObject,Context context) {
-        super(jsonObject, ContextCompat.getDrawable(context, R.drawable.tv));
+    public ControlGroupItem_Tv(JSONObject jsonObject) {
+        super(jsonObject);
     }
 
     @Override
@@ -36,5 +37,10 @@ public class ControlGroupItem_Tv  extends ControlGroupItemBase {
         button = (Button)layout.findViewById(R.id.control_switch);
 
         return layout;
+    }
+
+    @Override
+    public void SetState(Bundle data) {
+
     }
 }

@@ -1,6 +1,7 @@
 package de.maurice144.homecontrol.Data;
 
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +14,12 @@ import org.json.JSONObject;
 public abstract class ControlGroupItemBase {
 
     private JSONObject data;
-    private Drawable icon;
 
     protected ViewGroup viewGroup;
 
 
-    public ControlGroupItemBase(JSONObject jsonObject,Drawable icon) {
+    public ControlGroupItemBase(JSONObject jsonObject) {
         this.data = jsonObject;
-        this.icon = icon;
     }
 
     public long getId() {
@@ -44,9 +43,6 @@ public abstract class ControlGroupItemBase {
 
     protected abstract ViewGroup onCreateView(LayoutInflater inflater, ViewGroup parentView);
 
-    public Drawable getIcon() {
-        return icon;
-    }
-
+    public abstract void SetState(Bundle data);
 
 }

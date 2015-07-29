@@ -1,8 +1,12 @@
 package de.maurice144.homecontrol.FrontEnd.Activity;
 
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +14,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,6 +23,7 @@ import java.util.ArrayList;
 
 import de.maurice144.homecontrol.Adapter.ControlPageAdapter;
 import de.maurice144.homecontrol.Communication.SynchronisationService;
+import de.maurice144.homecontrol.Data.ControlGroupItemBase;
 import de.maurice144.homecontrol.Data.ControlPage;
 import de.maurice144.homecontrol.Data.ControlStructureJsonFile;
 import de.maurice144.homecontrol.Data.LocalSettings;
@@ -27,16 +33,42 @@ import de.maurice144.homecontrol.R;
 public class MainControlActivity extends ActionBarActivity implements ActionBar.TabListener {
 
 
-    private ArrayList<ControlPage> pages;
-
     ControlPageAdapter controlPageAdapter;
     ViewPager mViewPager;
 
+    BroadcastReceiver mBroadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_control);
+
+
+        if(!checkStructuredataAvailable()) {
+            return;
+        }
+
+
+        mBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                String messageMode = intent.getStringExtra("mode");
+
+
+                if(messageMode == null)
+                    return;
+
+                if(messageMode.equalsIgnoreCase("structurechanged")) {
+                    showStructureSyncDialog();
+                }
+
+                if(messageMode.equalsIgnoreCase("controlstatechanged")) {
+                    setControlState(intent.getExtras());
+                }
+
+            }
+        };
 
 
 
@@ -82,29 +114,75 @@ public class MainControlActivity extends ActionBarActivity implements ActionBar.
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Register mMessageReceiver to receive messages.
+        LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver,
+                new IntentFilter("de.maurice144.homecontrol.event.control"));
+    }
 
+    @Override
+    protected void onPause() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver);
+        super.onPause();
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_control, menu);
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    private void setControlState(Bundle data) {
+        ControlGroupItemBase item;
+        long controlId;
+        String conId = data.getString("controlid");
+        controlId = Long.parseLong(conId);
+        ArrayList<ControlPage> pages = controlPageAdapter.getPages();
+        for(ControlPage pg : pages) {
+            item = pg.RecursiveFindControlById(controlId);
+            if(item != null) {
+                item.SetState(data);
+            }
         }
-
-        return super.onOptionsItemSelected(item);
     }
+
+
+
+
+    private boolean checkStructuredataAvailable() {
+        LocalSettings settings = new LocalSettings(this);
+        if (settings.isStructureAvailable()) {
+            return true;
+        } else {
+            showStructureSyncDialog();
+            return false;
+        }
+    }
+
+    private void showStructureSyncDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainControlActivity.this);
+        alertDialogBuilder.setTitle("Strukturdaten");
+        alertDialogBuilder
+                .setMessage(getString(R.string.structurechange_text))
+                .setCancelable(false)
+                .setPositiveButton("Warten", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        MainControlActivity.this.startActivity(new Intent(MainControlActivity.this, SyncWaitActivity.class));
+                        MainControlActivity.this.finish();
+                    }
+                })
+                .setNegativeButton("Nein danke", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        MainControlActivity.this.finish();
+                    }
+                });
+        alertDialogBuilder.create().show();
+    }
+
+
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {

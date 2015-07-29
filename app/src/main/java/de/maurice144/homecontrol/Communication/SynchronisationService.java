@@ -3,6 +3,7 @@ package de.maurice144.homecontrol.Communication;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import de.maurice144.homecontrol.Communication.Requests.DefaultRequest;
@@ -54,6 +55,11 @@ public class SynchronisationService extends IntentService {
         LocalSettings settings = new LocalSettings(this);
         WebApi webApi = new WebApi(this,settings);
 
+
+        settings.setStructureAvailable(false);
+        settings.Save();
+
+
         ControlStructureResult conStrcResult;
         try {
             conStrcResult  = webApi.ControlStructure(new SecureDefaultRequest(settings.getDeviceToken()));
@@ -81,8 +87,17 @@ public class SynchronisationService extends IntentService {
             return;
         }
 
+        Intent intent = new Intent("de.maurice144.homecontrol.event.control");
+        intent.putExtra("mode", "structurechanged");
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+
+
+
+
         settings.setStructureAvailable(true);
         settings.Save();
+
+
 
     }
 

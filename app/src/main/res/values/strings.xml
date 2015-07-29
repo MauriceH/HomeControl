@@ -25,11 +25,16 @@
     <string name="ControlItem_Music_Template_RADIO">Radio</string>
 
 
+    <string name="ControlItem_UpDown_Template">UpDown</string>
+
+
     <string name="ControlGroupTitle_Template">Gruppentitel</string>
     <string name="title_activity_start">HomeControl</string>
     <string name="title_activity_settings">Einstellungen</string>
     <string name="login_text">Für diese APP benötigen Sie einen Home-Control Account. Bitte melden Sie sich mit Ihren Zugangsdaten an.</string>
     <string name="nostructure_text">Mit Ihrem Account ist noch keine Synchronisierung durchgeführt worden. Möchten Sie die Synchronisierung nun ausführen?</string>
+    <string name="structurechange_text">Ihre Strukturdaten wurden geändert. Möchten Sie auf die Synchronisierung der Strukturdaten warten?</string>
+    <string name="title_activity_sync_wait">Synchronisierung</string>
 
 
 </resources>

@@ -9,5 +9,7 @@
     <color name="whitetransparent">#44FFFFFF</color>
     <color name="selectedtransparent">#8800AAFF</color>
 
+    <color name="updown_default">#AAAAAA</color>
+
 
 </resources>

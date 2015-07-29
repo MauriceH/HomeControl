@@ -30,7 +30,7 @@ public class ControlPage {
             for(int i=0;i<items.length();i++) {
                 jsonObj = items.optJSONObject(i);
                 if(jsonObj != null) {
-                    controlGroup = new ControlGroup(jsonObj,context);
+                    controlGroup = new ControlGroup(jsonObj);
                     this.getGroups().add(controlGroup);
                 }
             }
@@ -49,4 +49,23 @@ public class ControlPage {
     public ArrayList<ControlGroup> getGroups() {
         return groups;
     }
+
+
+    public void RecursiveAddControls(ArrayList<ControlGroupItemBase> items) {
+        for(ControlGroup group : groups) {
+            items.addAll(group.getControls());
+        }
+    }
+
+    public ControlGroupItemBase RecursiveFindControlById(long id) {
+        for(ControlGroup group : groups) {
+            for(ControlGroupItemBase item : group.getControls()) {
+                if(item.getId() == id) {
+                    return item;
+                }
+            }
+        }
+        return null;
+    }
+
 }

@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import de.maurice144.homecontrol.Data.ControlPage;
 import de.maurice144.homecontrol.FrontEnd.Control_Main_Fragment;
 
 /**
@@ -50,6 +51,15 @@ public class ControlPageAdapter extends FragmentPagerAdapter {
             }
         }
         return fragment;
+    }
+
+    public ArrayList<ControlPage> getPages() {
+        ArrayList<ControlPage> retPages = new ArrayList<>();
+        for(Control_Main_Fragment fragment : fragments) {
+            if(fragment != null)
+                retPages.add(fragment.getPage());
+        }
+        return retPages;
     }
 
     @Override
