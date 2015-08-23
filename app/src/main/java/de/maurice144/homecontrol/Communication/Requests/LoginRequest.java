@@ -18,7 +18,7 @@ public class LoginRequest extends DefaultRequest {
 
     public void setUsername(String username) {
         try {
-            data.put("user", username);
+            data.put("UserNam", username);
         }catch (Exception ex) {
         }
     }

@@ -37,7 +37,7 @@ public class WebApi {
 
     public LoginResult Login(LoginRequest request) throws Exception {
         LoginResult actResult = null;
-        JSONObject jsonResult = restcon.sendPostData("login.php", request.getJsonData());
+        JSONObject jsonResult = restcon.sendPostData("login", request.getJsonData());
         if (jsonResult != null && !jsonResult.toString().equals(""))
             actResult = new LoginResult(jsonResult);
         return actResult;
