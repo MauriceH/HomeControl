@@ -19,7 +19,7 @@ import de.maurice144.homecontrol.R;
  */
 public class ControlGroupItem_UpDown extends ControlGroupItemBase {
 
-    public static final String KEY_CONTROL_TYPE = "UPDOWN";
+    public static final String KEY_CONTROL_TYPE = "updown";
 
     private TextView title;
     private ImageButton buttonDown;

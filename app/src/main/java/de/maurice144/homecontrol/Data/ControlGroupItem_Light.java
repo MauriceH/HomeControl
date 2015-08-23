@@ -17,12 +17,12 @@ import de.maurice144.homecontrol.R;
  */
 public class ControlGroupItem_Light extends ControlGroupItemBase {
 
-    public static final String KEY_CONTROL_TYPE = "LIGHT";
+    public static final String KEY_CONTROL_TYPE = "light";
 
     private TextView title;
     private Switch switchOnOff;
 
-    private boolean state = false;
+
 
     public ControlGroupItem_Light(JSONObject jsonObject) {
         super(jsonObject);
@@ -40,7 +40,7 @@ public class ControlGroupItem_Light extends ControlGroupItemBase {
         switchOnOff.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                state = isChecked;
+                ControlGroupItem_Light.this.SaveNewState(isChecked ? 1 : 0);
             }
         });
 
@@ -50,6 +50,7 @@ public class ControlGroupItem_Light extends ControlGroupItemBase {
     @Override
     public void SetState(Bundle data) {
         String newState = data.getString("state","off");
-        switchOnOff.setChecked(newState.equalsIgnoreCase("on"));
+        SaveNewState(newState.equalsIgnoreCase("on") ? 1 : 0);
+        switchOnOff.setChecked(getState() == 1);
     }
 }

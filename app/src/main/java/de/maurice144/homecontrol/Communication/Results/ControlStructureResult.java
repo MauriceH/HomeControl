@@ -17,7 +17,7 @@ public class ControlStructureResult extends DefaultResult {
     }
 
     public JSONObject getControlJsonObj() {
-        return this.data.optJSONObject("controldata");
+        return this.data;
     }
 
 

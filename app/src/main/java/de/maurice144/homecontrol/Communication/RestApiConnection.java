@@ -24,8 +24,9 @@ import javax.net.ssl.X509TrustManager;
  */
 public class RestApiConnection {
 
-    private static final String CONST_HOSTNAME = "familiehessing.de";
-    private static final String CONST_SERVICEPATH = "http://" + CONST_HOSTNAME + "/homecontrol/";
+    //"maurice.svc.g-u-t.org:10701";
+    private static final String CONST_HOSTNAME = "192.168.144.34";
+    private static final String CONST_SERVICEPATH = "http://" + CONST_HOSTNAME + "/HomeControl/";
 
     private static final String CONTENT_TYPE_JSON = "application/json";
     private static final String CONTENT_TYPE_BYTES = "binary/octet-stream";

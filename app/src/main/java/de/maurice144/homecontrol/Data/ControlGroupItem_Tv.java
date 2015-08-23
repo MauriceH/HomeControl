@@ -18,7 +18,7 @@ import de.maurice144.homecontrol.R;
  */
 public class ControlGroupItem_Tv  extends ControlGroupItemBase {
 
-    public static final String KEY_CONTROL_TYPE = "TV";
+    public static final String KEY_CONTROL_TYPE = "tv";
 
     private TextView title;
     private Button button;

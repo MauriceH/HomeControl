@@ -1,10 +1,13 @@
 package de.maurice144.homecontrol.Data;
 
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.gms.gcm.Task;
 
 import org.json.JSONObject;
 
@@ -17,17 +20,20 @@ public abstract class ControlGroupItemBase {
 
     protected ViewGroup viewGroup;
 
+    private int state = 0;
+
+
 
     public ControlGroupItemBase(JSONObject jsonObject) {
         this.data = jsonObject;
     }
 
     public long getId() {
-        return data.optLong("id", 0);
+        return data.optLong("Id", 0);
     }
 
     public String getTitle() {
-        return data.optString("title", "No Title");
+        return data.optString("Title", "No Title");
     }
 
 
@@ -44,5 +50,13 @@ public abstract class ControlGroupItemBase {
     protected abstract ViewGroup onCreateView(LayoutInflater inflater, ViewGroup parentView);
 
     public abstract void SetState(Bundle data);
+
+    protected void SaveNewState(int newState) {
+        state = newState;
+    }
+
+    protected int getState() {
+        return state;
+    }
 
 }

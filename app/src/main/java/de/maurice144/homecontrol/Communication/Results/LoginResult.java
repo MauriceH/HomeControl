@@ -11,16 +11,16 @@ public class LoginResult extends DefaultResult{
         super(data);
     }
 
-    public long getUserId() {
-        return data.optLong("userid",-1l);
+    public String getUserId() {
+        return data.optString("UserId",null);
     }
 
     public String getFullName() {
-        return data.optString("fullname", null);
+        return data.optString("FullName", null);
     }
 
     public String getDeviceToken() {
-        return data.optString("devicetoken", null);
+        return data.optString("DeviceToken", null);
     }
 
 }

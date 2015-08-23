@@ -16,11 +16,15 @@ public class DefaultResult {
     }
 
     public boolean isDoneCorrect() {
-        return data.optBoolean("donecorrect",false);
+        return data.optBoolean("Ok",false);
     }
 
     public int intErrorCode() {
-        return data.optInt("errorcode",0);
+        return data.optInt("ErrCode", 0);
+    }
+
+    public boolean AuthentificationNotValid() {
+        return intErrorCode() == 403;
     }
 
 }

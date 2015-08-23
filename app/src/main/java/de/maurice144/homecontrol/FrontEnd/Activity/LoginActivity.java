@@ -218,7 +218,7 @@ public class LoginActivity extends Activity {
                 LoginResult result = api.Login(new LoginRequest(mEmail,mPassword));
                 if(result != null) {
                     if(result.isDoneCorrect()) {
-                        if(result.getUserId() != -1) {
+                        if(result.getUserId() != null) {
                             settings.setNewActivation(result.getDeviceToken(), result.getUserId(), result.getFullName());
                             settings.Save();
                             loginOk = true;

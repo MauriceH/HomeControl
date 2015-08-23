@@ -18,14 +18,14 @@ public class LoginRequest extends DefaultRequest {
 
     public void setUsername(String username) {
         try {
-            data.put("UserNam", username);
+            data.put("UserName", username);
         }catch (Exception ex) {
         }
     }
 
     public void setPassword(String password) {
         try {
-            data.put("pass", password);
+            data.put("Password", password);
         }catch (Exception ex) {
         }
     }

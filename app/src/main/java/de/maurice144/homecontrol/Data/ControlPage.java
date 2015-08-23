@@ -23,7 +23,7 @@ public class ControlPage {
         this.groups = new ArrayList<ControlGroup>();
         this.fragement = new Control_Main_Fragment();
 
-        JSONArray items = this.data.optJSONArray("groups");
+        JSONArray items = this.data.optJSONArray("Groups");
         JSONObject jsonObj;
         ControlGroup controlGroup;
         if(items != null && items.length() > 0) {
@@ -38,11 +38,11 @@ public class ControlPage {
     }
 
     public long getId() {
-        return data.optLong("id",0);
+        return data.optLong("Id",0);
     }
 
     public String getTitle() {
-        return data.optString("title", "No Title");
+        return data.optString("Title", "No Title");
     }
 
 

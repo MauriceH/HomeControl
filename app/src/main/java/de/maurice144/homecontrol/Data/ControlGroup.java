@@ -27,7 +27,7 @@ public class ControlGroup {
         this.data = jsonObject;
         this.controls = new ArrayList<ControlGroupItemBase>();
 
-        JSONArray items = this.data.optJSONArray("controls");
+        JSONArray items = this.data.optJSONArray("Controls");
         JSONObject jsonObj;
         ControlGroupItemBase controlGroupItemBase;
         String objType;
@@ -35,7 +35,7 @@ public class ControlGroup {
             for(int i=0;i<items.length();i++) {
                 jsonObj = items.optJSONObject(i);
                 if(jsonObj != null) {
-                    objType = jsonObj.optString("controltype","NULL");
+                    objType = jsonObj.optString("ControlType","NULL");
                     controlGroupItemBase = null;
 
                     if(objType.equalsIgnoreCase(ControlGroupItem_Light.KEY_CONTROL_TYPE)) {
@@ -58,11 +58,11 @@ public class ControlGroup {
     }
 
     public long getId() {
-        return data.optLong("id",0);
+        return data.optLong("Id",0);
     }
 
     public String getTitle() {
-        return data.optString("title", "No Title");
+        return data.optString("Title", "No Title");
     }
 
 

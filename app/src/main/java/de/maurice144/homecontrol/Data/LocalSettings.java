@@ -16,8 +16,9 @@ public class LocalSettings {
 
     private String deviceToken;
     private String userFullName;
-    private long userId;
+    private String userId;
     private String gcmToken;
+    private boolean gcmTokenTransfered;
 
     private boolean structureAvailable;
 
@@ -34,9 +35,10 @@ public class LocalSettings {
 
         deviceToken  = sharedPref.getString("deviceToken",null);
         userFullName = sharedPref.getString("userFullName",null);
-        userId = sharedPref.getLong("userId", -1);
+        userId = sharedPref.getString("userId", null);
         gcmToken = sharedPref.getString("gcmtoken", null);
-        structureAvailable = sharedPref.getBoolean("structureavailable",false);
+        structureAvailable = sharedPref.getBoolean("structureavailable", false);
+        gcmTokenTransfered = sharedPref.getBoolean("gcmTokenTransfered",false);
     }
 
     public void Save() {
@@ -45,9 +47,10 @@ public class LocalSettings {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("deviceToken",this.deviceToken);
         editor.putString("userFullName",this.userFullName);
-        editor.putLong("userId", this.userId);
+        editor.putString("userId", this.userId);
         editor.putString("gcmtoken", this.gcmToken);
-        editor.putBoolean("structureavailable",this.structureAvailable);
+        editor.putBoolean("structureavailable", this.structureAvailable);
+        editor.putBoolean("gcmTokenTransfered",this.gcmTokenTransfered);
         editor.apply();
     }
 
@@ -78,7 +81,7 @@ public class LocalSettings {
         return userFullName;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
@@ -89,11 +92,18 @@ public class LocalSettings {
 
     public void setGcmToken(String gcmToken) {
         this.gcmToken = gcmToken;
+        this.gcmTokenTransfered = false;
+    }
+    public boolean isGcmTokenTransfered() {
+        return gcmTokenTransfered;
+    }
+
+    public void setGcmTokenTransfered() {
+        this.gcmTokenTransfered = true;
     }
 
 
-
-    public void setNewActivation(String deviceToken, long userId, String userFullName) {
+    public void setNewActivation(String deviceToken, String userId, String userFullName) {
         this.deviceToken = deviceToken;
         this.userId = userId;
         this.userFullName = userFullName;
@@ -101,8 +111,10 @@ public class LocalSettings {
 
     public void clearAccountData() {
         this.deviceToken = null;
-        this.userId = -1;
+        this.userId = null;
         this.userFullName = null;
+        this.gcmTokenTransfered = false;
+        this.structureAvailable = false;
     }
 
 

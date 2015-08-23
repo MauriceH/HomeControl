@@ -16,7 +16,7 @@ public class SecureDefaultRequest extends DefaultRequest {
 
     public void setDeviceToken(String deviceToken) {
         try {
-            data.put("devicetoken", deviceToken);
+            data.put("DeviceToken", deviceToken);
         }catch (Exception ex) {
         }
     }

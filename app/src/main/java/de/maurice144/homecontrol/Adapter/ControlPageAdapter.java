@@ -73,7 +73,7 @@ public class ControlPageAdapter extends FragmentPagerAdapter {
         try {
             jsonObject = this.pages.getJSONObject(position);
             if(jsonObject != null) {
-                return jsonObject.optString("title","Kein Titel");
+                return jsonObject.optString("Title","Kein Titel");
             }
         } catch (Exception ex) {
             Log.e("GetFragementTitle",ex.getMessage(),ex);

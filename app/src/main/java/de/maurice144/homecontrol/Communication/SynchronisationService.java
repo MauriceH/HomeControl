@@ -6,9 +6,13 @@ import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import java.util.Objects;
+
 import de.maurice144.homecontrol.Communication.Requests.DefaultRequest;
+import de.maurice144.homecontrol.Communication.Requests.GcmTokenRequest;
 import de.maurice144.homecontrol.Communication.Requests.SecureDefaultRequest;
 import de.maurice144.homecontrol.Communication.Results.ControlStructureResult;
+import de.maurice144.homecontrol.Communication.Results.DefaultResult;
 import de.maurice144.homecontrol.Data.ControlStructureJsonFile;
 import de.maurice144.homecontrol.Data.LocalSettings;
 
@@ -17,15 +21,17 @@ import de.maurice144.homecontrol.Data.LocalSettings;
  */
 public class SynchronisationService extends IntentService {
 
+    public Object syncObjectGcmSend;
 
     public static final String STARTMODE = "STARTMODE";
 
     public static final int STARTMODE_SyncStructure = 1001;
+    public static final int STARTMODE_SendGcmToken = 1002;
 
 
     public static Intent getServiceStartIntentByMode(Context context,int serviceStartMode) {
         Intent intent = new  Intent(context,SynchronisationService.class);
-        intent.putExtra(STARTMODE,serviceStartMode);
+        intent.putExtra(STARTMODE, serviceStartMode);
         return intent;
     }
 
@@ -34,6 +40,7 @@ public class SynchronisationService extends IntentService {
 
     public SynchronisationService() {
         super("SynchronisationService");
+        syncObjectGcmSend = new Object();
     }
 
     @Override
@@ -47,6 +54,11 @@ public class SynchronisationService extends IntentService {
         switch (serviceRunMode) {
             case STARTMODE_SyncStructure:
                 SyncControlStructure();
+                break;
+            case STARTMODE_SendGcmToken:
+                synchronized (syncObjectGcmSend) {
+                    SendGcmToken();
+                }
                 break;
         }
     }
@@ -69,12 +81,16 @@ public class SynchronisationService extends IntentService {
         }
 
         if(!conStrcResult.isDoneCorrect()) {
-            Log.e("ControlStructure","Error sync control structure! Code: " + String.valueOf(conStrcResult.intErrorCode()));
+            if(conStrcResult.AuthentificationNotValid()) {
+                settings.clearAccountData();
+                settings.Save();
+            }
+            Log.e("ControlStructure", "Error sync control structure! Code: " + String.valueOf(conStrcResult.intErrorCode()));
             return;
         }
 
         if(conStrcResult.getControlJsonObj() == null) {
-            Log.e("SControlStructure","Error structure empty!");
+            Log.e("ControlStructure","Error structure empty!");
             return;
         }
 
@@ -101,5 +117,33 @@ public class SynchronisationService extends IntentService {
 
     }
 
+    private void SendGcmToken() {
+        LocalSettings settings = new LocalSettings(this);
+        WebApi webApi = new WebApi(this,settings);
 
+        String token = settings.getGcmToken();
+
+        if(token == null) {
+            return;
+        }
+
+        try {
+            DefaultResult result =  webApi.SendGcmToken(new GcmTokenRequest(settings.getDeviceToken(), token));
+
+            if(result != null) {
+                if(result.isDoneCorrect()) {
+                    settings.setGcmTokenTransfered();
+                    settings.Save();
+                } else{
+                    if(result.AuthentificationNotValid()) {
+                        settings.clearAccountData();
+                        settings.Save();
+                    }
+                }
+            }
+
+        }catch (Exception ex) {
+            Log.e("SendGcmToken",ex.getMessage(),ex);
+        }
+    }
 }

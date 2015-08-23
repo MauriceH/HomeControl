@@ -91,7 +91,7 @@ public class MainControlActivity extends ActionBarActivity implements ActionBar.
         }
 
 
-        JSONArray jsonPages = rootJsonElement.optJSONArray("pages");
+        JSONArray jsonPages = rootJsonElement.optJSONArray("Pages");
         controlPageAdapter = new ControlPageAdapter(getSupportFragmentManager(),jsonPages);
 
         mViewPager = (ViewPager) findViewById(R.id.pager);

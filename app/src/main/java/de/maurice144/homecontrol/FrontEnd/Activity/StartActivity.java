@@ -47,6 +47,10 @@ public class StartActivity extends ActionBarActivity {
                     Intent intent = new Intent(this, RegistrationIntentService.class);
                     startService(intent);
                 }
+            } else {
+                if(!getSettings().isGcmTokenTransfered()) {
+                    startService(SynchronisationService.getServiceStartIntentByMode(this,SynchronisationService.STARTMODE_SendGcmToken));
+                }
             }
         }
     }
@@ -56,6 +60,11 @@ public class StartActivity extends ActionBarActivity {
         if(!checkLogon()) return;
         if(!settings.isStructureAvailable()) {
             displayNoStructureDialog(settings);
+            return;
+        }
+        if(!getSettings().isGcmTokenTransfered()) {
+            startService(SynchronisationService.getServiceStartIntentByMode(this,SynchronisationService.STARTMODE_SendGcmToken));
+            displayNoGcmSentDialog(settings);
             return;
         }
         startActivity(new Intent(this, MainControlActivity.class));
@@ -70,7 +79,7 @@ public class StartActivity extends ActionBarActivity {
 
     public void onMenu_StartMusic_Click(View v) {
         LocalSettings settings = new LocalSettings(this);
-        settings.setNewActivation(null, -1, null);
+        settings.clearAccountData();
         settings.setGcmToken(null);
         settings.Save();
         Toast.makeText(this,"Aktivierung gelöscht", Toast.LENGTH_SHORT).show();
@@ -159,6 +168,26 @@ public class StartActivity extends ActionBarActivity {
         alertDialog.show();
     }
 
+    private void displayNoGcmSentDialog(LocalSettings settings) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        // set title
+        alertDialogBuilder.setTitle("Kein Push-Token");
+        // set dialog mesage
+        alertDialogBuilder
+                .setMessage(getString(R.string.nogcmsent_text))
+                .setCancelable(false)
+                .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
 
 
 

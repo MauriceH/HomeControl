@@ -7,6 +7,7 @@ import android.util.Log;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 
+import de.maurice144.homecontrol.Communication.SynchronisationService;
 import de.maurice144.homecontrol.Data.LocalSettings;
 
 /**
@@ -45,6 +46,7 @@ public class RegistrationIntentService extends IntentService {
         LocalSettings localSettings = new LocalSettings(this);
         localSettings.setGcmToken(token);
         localSettings.Save();
+        startService(SynchronisationService.getServiceStartIntentByMode(this,SynchronisationService.STARTMODE_SendGcmToken));
     }
 
 
