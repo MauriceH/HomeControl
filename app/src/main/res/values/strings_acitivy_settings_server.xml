@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="settings_server_title">Anmelden</string>
+
+    <string name="settings_server_hint_hostlocal">LAN Host</string>
+    <string name="settings_server_hint_hostremote">Remote Host</string>
+    <string name="settings_server_hint_port">10701</string>
+
+    <string name="settings_server_submit">Verbinden</string>
+    <string name="settings_server_searchServer">Server im WLAN suchen</string>
+
+</resources>

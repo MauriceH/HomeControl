@@ -22,6 +22,11 @@ public class LocalSettings {
 
     private boolean structureAvailable;
 
+    private boolean serverConfigured;
+    private String serverHostNameLocal;
+    private String serverHostNameRemote;
+    private int serverPort;
+
 
 
     public LocalSettings(Context context) {
@@ -39,6 +44,10 @@ public class LocalSettings {
         gcmToken = sharedPref.getString("gcmtoken", null);
         structureAvailable = sharedPref.getBoolean("structureavailable", false);
         gcmTokenTransfered = sharedPref.getBoolean("gcmTokenTransfered",false);
+        serverConfigured = sharedPref.getBoolean("serverConfigured",false);
+        serverHostNameLocal = sharedPref.getString("serverHostNameLocal", null);
+        serverHostNameRemote = sharedPref.getString("serverHostNameRemote", null);
+        serverPort = sharedPref.getInt("serverPort", 10701);
     }
 
     public void Save() {
@@ -51,6 +60,11 @@ public class LocalSettings {
         editor.putString("gcmtoken", this.gcmToken);
         editor.putBoolean("structureavailable", this.structureAvailable);
         editor.putBoolean("gcmTokenTransfered",this.gcmTokenTransfered);
+
+        editor.putBoolean("serverConfigured",this.serverConfigured);
+        editor.putString("serverHostNameLocal", this.serverHostNameLocal);
+        editor.putString("serverHostNameRemote",this.serverHostNameRemote);
+        editor.putInt("serverPort",this.serverPort);
         editor.apply();
     }
 
@@ -118,5 +132,28 @@ public class LocalSettings {
     }
 
 
+
+    public boolean isServerConfigured() {
+        return isServerConfigured();
+    }
+
+    public String getServerHostNameLocal() {
+        return serverHostNameLocal;
+    }
+
+    public String getServerHostNameRemote() {
+        return serverHostNameRemote;
+    }
+
+    public int getServerPort() {
+        return serverPort;
+    }
+
+    public void setServerConfiguration(String hostNameLocal, String hostNameRemote,int Port) {
+        serverHostNameLocal = hostNameLocal;
+        serverHostNameRemote = hostNameRemote;
+        serverPort = Port;
+        serverConfigured = true;
+    }
 
 }

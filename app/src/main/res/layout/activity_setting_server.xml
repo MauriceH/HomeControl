@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:gravity="center_horizontal"
+    android:orientation="vertical" android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="de.maurice144.homecontrol.FrontEnd.Activity.LoginActivity"
+    style="@style/HomeScreen">
+
+    <!-- Login progress -->
+    <ProgressBar android:id="@+id/server_settings_progress" style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp" android:visibility="gone" android:layout_marginTop="40dp"/>
+
+    <ScrollView android:id="@+id/server_settings_form" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:visibility="visible">
+
+        <LinearLayout android:id="@+id/server_settings_layout" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="HomeControl Server"
+                android:padding="15dp"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"/>
+
+            <EditText android:id="@+id/server_hostname_local" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:hint="@string/settings_server_hint_hostlocal"
+                android:inputType="textUri" android:maxLines="1"
+                android:singleLine="true" />
+
+            <EditText android:id="@+id/server_hostname_remote" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:hint="@string/settings_server_hint_hostremote"
+                android:inputType="textUri" android:maxLines="1"
+                android:singleLine="true" />
+
+            <EditText android:id="@+id/server_port" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:hint="@string/settings_server_hint_port"
+                android:inputType="number"
+                android:maxLines="1" android:singleLine="true" />
+
+            <Button android:id="@+id/settings_server_connect" style="?android:textAppearanceSmall"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" android:text="@string/settings_server_submit"
+                android:textStyle="bold" />
+
+            <Button android:id="@+id/settings_server_search" style=""
+                android:layout_width="wrap_content" android:layout_height="40dp"
+                android:layout_marginTop="16dp" android:text="@string/settings_server_searchServer"
+                android:shadowColor="@android:color/holo_blue_light"
+                android:background="@android:color/holo_blue_dark"
+                android:layout_gravity="center_horizontal"
+                android:padding="12dp"
+
+                android:textStyle="normal" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+

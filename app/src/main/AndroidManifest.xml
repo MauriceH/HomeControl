@@ -74,6 +74,11 @@
             android:name=".FrontEnd.Activity.SyncWaitActivity"
             android:label="@string/title_activity_sync_wait" >
         </activity>
+
+        <activity
+            android:name=".FrontEnd.Activity.ServerSettingActivity"
+            android:label="@string/settings_server_title" >
+        </activity>
     </application>
 
 </manifest>

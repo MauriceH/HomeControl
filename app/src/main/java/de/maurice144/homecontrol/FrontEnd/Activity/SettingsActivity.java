@@ -35,5 +35,10 @@ public class SettingsActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 
+    public void onServerClicked(View v) {
+        startActivity(new Intent(this, ServerSettingActivity.class));
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+    }
+
 
 }
