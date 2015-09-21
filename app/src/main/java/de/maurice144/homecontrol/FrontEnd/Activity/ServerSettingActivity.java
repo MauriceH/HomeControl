@@ -1,20 +1,25 @@
 package de.maurice144.homecontrol.FrontEnd.Activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.SocketException;
 import java.net.SocketTimeoutException;
 
 import de.maurice144.homecontrol.Data.LocalSettings;
@@ -27,10 +32,11 @@ public class ServerSettingActivity extends Activity {
 
 
     ScrollView scrollView;
-    ProgressBar progressBar;
+    RelativeLayout progressBar;
     EditText remoteServer;
     EditText localServer;
     EditText serverPort;
+    TextView countdownText;
 
 
 
@@ -43,11 +49,13 @@ public class ServerSettingActivity extends Activity {
 
         Button searchInWlan = (Button)findViewById(R.id.settings_server_search);
         scrollView = (ScrollView)findViewById(R.id.server_settings_form);
-        progressBar = (ProgressBar)findViewById(R.id.server_settings_progress);
+        progressBar = (RelativeLayout)findViewById(R.id.server_settings_progress_layout);
 
         remoteServer = (EditText)findViewById(R.id.server_hostname_remote);
         localServer = (EditText)findViewById(R.id.server_hostname_local);
         serverPort = (EditText)findViewById(R.id.server_port);
+
+        countdownText = (TextView)findViewById(R.id.server_settings_progress_text);
 
         setDataOfSettings();
 
@@ -62,8 +70,27 @@ public class ServerSettingActivity extends Activity {
 
     private void startSearchForServer() {
 
+
+        View view = localServer;
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+
+
         scrollView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
+
+
+        new CountDownTimer(10 * 1000 + 800,100 ) {
+            public void onTick(long millisUntilFinished) {
+                countdownText.setText(String.valueOf(millisUntilFinished / 1000));
+            }
+            public void onFinish() {
+                countdownText.setText("0");
+            }
+        }.start();
+
 
         AsyncTask<String,String,String> task = new AsyncTask<String, String, String>() {
             @Override
@@ -81,10 +108,14 @@ public class ServerSettingActivity extends Activity {
                     data = convert(packet.getData(),packet.getLength());
 
                     return data;
-                }catch (SocketTimeoutException e){Log.e("receive","time out");}
+                }catch (SocketTimeoutException e){Log.e("receive","time out" + e.getMessage());}
                 catch (IOException e) {Log.e("receive","error 1");
                     // TODO Auto-generated catch block
                     e.printStackTrace();
+                } finally {
+                    if (socket != null) {
+                        socket.close();
+                    }
                 }
                 return null;
             }
@@ -115,8 +146,8 @@ public class ServerSettingActivity extends Activity {
         progressBar.setVisibility(View.GONE);
 
 
-
         if(data == null) {
+            Toast.makeText(this,"Server nicht gefunden!",Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -126,13 +157,16 @@ public class ServerSettingActivity extends Activity {
             settings.setServerConfiguration(separated[1],separated[0], Integer.parseInt(separated[2]));
             settings.Save();
             setDataOfSettings();
+            return;
         } catch (Exception ex) {
             Log.e("Rec",ex.getMessage());
         }
 
+        new AlertDialog.Builder(this)
+                .setMessage("Server nicht gefunden")
+                .setTitle("Serversuche")
+                .setNegativeButton("OK",null).show();
 
-
-        Log.e("receive",data);
     }
 
     private void setDataOfSettings() {
