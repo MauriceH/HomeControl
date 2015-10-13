@@ -27,8 +27,6 @@ public class LocalSettings {
     private String serverHostNameRemote;
     private int serverPort;
 
-
-
     public LocalSettings(Context context) {
         this.context = context;
         ReLoad();
@@ -134,7 +132,7 @@ public class LocalSettings {
 
 
     public boolean isServerConfigured() {
-        return isServerConfigured();
+        return this.serverConfigured;
     }
 
     public String getServerHostNameLocal() {

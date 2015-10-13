@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -38,6 +37,8 @@ public class ServerSettingActivity extends Activity {
     EditText serverPort;
     TextView countdownText;
 
+
+    private CountDownTimer countDownTimer;
 
 
 
@@ -81,8 +82,13 @@ public class ServerSettingActivity extends Activity {
         scrollView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
 
+        if(countDownTimer != null) {
+            countDownTimer.cancel();
+        }
 
-        new CountDownTimer(10 * 1000 + 800,100 ) {
+        countDownTimer = new CountDownTimer(10 * 1000 + 800,100 ) {
+
+
             public void onTick(long millisUntilFinished) {
                 countdownText.setText(String.valueOf(millisUntilFinished / 1000));
             }
@@ -105,7 +111,7 @@ public class ServerSettingActivity extends Activity {
                     socket.setSoTimeout(10000);
                     socket.receive(packet);
                     String data;
-                    data = convert(packet.getData(),packet.getLength());
+                    data = convertByteToString(packet.getData(), packet.getLength());
 
                     return data;
                 }catch (SocketTimeoutException e){Log.e("receive","time out" + e.getMessage());}
@@ -131,7 +137,7 @@ public class ServerSettingActivity extends Activity {
 
     }
 
-    String convert(byte[] data,int length) {
+    String convertByteToString(byte[] data, int length) {
         StringBuilder sb = new StringBuilder(data.length);
         for (int i = 0; i < length; ++ i) {
             if (data[i] < 0) throw new IllegalArgumentException();
@@ -145,6 +151,9 @@ public class ServerSettingActivity extends Activity {
         scrollView.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
 
+        if(countDownTimer != null) {
+            countDownTimer.cancel();
+        }
 
         if(data == null) {
             Toast.makeText(this,"Server nicht gefunden!",Toast.LENGTH_LONG).show();

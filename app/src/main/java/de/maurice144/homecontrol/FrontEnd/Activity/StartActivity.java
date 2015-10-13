@@ -57,7 +57,9 @@ public class StartActivity extends ActionBarActivity {
 
 
     public void onMenu_StartControl_Click(View v) {
+        if(!checkServer()) return;
         if(!checkLogon()) return;
+
         if(!settings.isStructureAvailable()) {
             displayNoStructureDialog(settings);
             return;
@@ -72,12 +74,12 @@ public class StartActivity extends ActionBarActivity {
     }
 
     public void onMenu_StartSettings_Click(View v) {
-        if(!checkLogon()) return;
         startActivity(new Intent(this, SettingsActivity.class));
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 
     public void onMenu_StartMusic_Click(View v) {
+        // TODO Temp for app test
         LocalSettings settings = new LocalSettings(this);
         settings.clearAccountData();
         settings.setGcmToken(null);
@@ -88,39 +90,62 @@ public class StartActivity extends ActionBarActivity {
 
     private boolean checkLogon() {
         settings = getSettings();
-        if(!settings.isLoggedIn()) {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-            // set title
-            alertDialogBuilder.setTitle("Anmeldung");
-
-            // set dialog message
-            alertDialogBuilder
-                    .setMessage(getString(R.string.login_text))
-                    .setCancelable(false)
-                    .setPositiveButton("Anmelden", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            startActivity(new Intent(StartActivity.this,LoginActivity.class));
-                            StartActivity.this.finish();
-                        }
-                    })
-                    .setNegativeButton("Beenden", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            StartActivity.this.finish();
-                            dialog.cancel();
-                        }
-                    });
-
-            // create alert dialog
-            AlertDialog alertDialog = alertDialogBuilder.create();
-
-            // show it
-            alertDialog.show();
-            return false;
+        if (settings.isLoggedIn()) {
+            return true;
         }
-        return true;
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set title
+        alertDialogBuilder.setTitle("Anmeldung");
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage(getString(R.string.login_text))
+                .setCancelable(false)
+                .setPositiveButton("Anmelden", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        startActivity(new Intent(StartActivity.this,LoginActivity.class));
+                        StartActivity.this.finish();
+                    }
+                })
+                .setNegativeButton("Abbrechen", null);
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+        return false;
     }
 
+    private boolean checkServer() {
+        settings = getSettings();
+        if (settings.isServerConfigured()) {
+            return true;
+        }
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set title
+        alertDialogBuilder.setTitle("Server");
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage(getString(R.string.server_text))
+                .setCancelable(false)
+                .setPositiveButton("Konfigurieren", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        startActivity(new Intent(StartActivity.this, ServerSettingActivity.class));
+                    }
+                })
+                .setNegativeButton("Abbrechen", null);
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+        return false;
+    }
 
     private boolean checkPlayServices() {
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);

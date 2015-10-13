@@ -72,5 +72,18 @@ public class WebApi {
         return actResult;
     }
 
+    public boolean CheckConnection() {
+
+        try {
+            JSONObject jsonResult = restcon.sendPostData("test");
+            if (jsonResult != null && !jsonResult.toString().equals("")) {
+
+            }
+        } catch (Exception ex) {
+
+        }
+        return false;
+    }
+
 
 }
