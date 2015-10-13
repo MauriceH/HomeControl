@@ -32,6 +32,7 @@
     <string name="title_activity_start">HomeControl</string>
     <string name="title_activity_settings">Einstellungen</string>
     <string name="login_text">Für diese APP benötigen Sie einen Home-Control Account. Bitte melden Sie sich mit Ihren Zugangsdaten an.</string>
+    <string name="server_text">Bitte konfigurieren Sie Ihren HomeControl-Server.</string>
     <string name="nostructure_text">Mit Ihrem Account ist noch keine Synchronisierung durchgeführt worden. Möchten Sie die Synchronisierung nun ausführen?</string>
     <string name="nogcmsent_text">Es ist noch kein Push-Token übertragen worden. Bitte versuchen Sie es später noch einmal.</string>
     <string name="structurechange_text">Ihre Strukturdaten wurden geändert. Möchten Sie auf die Synchronisierung der Strukturdaten warten?</string>
