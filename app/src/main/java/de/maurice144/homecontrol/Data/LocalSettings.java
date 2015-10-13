@@ -134,7 +134,7 @@ public class LocalSettings {
 
 
     public boolean isServerConfigured() {
-        return isServerConfigured();
+        return serverConfigured;
     }
 
     public String getServerHostNameLocal() {

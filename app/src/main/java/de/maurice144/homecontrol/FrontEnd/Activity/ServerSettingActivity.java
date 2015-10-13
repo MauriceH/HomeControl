@@ -47,6 +47,8 @@ public class ServerSettingActivity extends Activity {
 
         setContentView(R.layout.activity_setting_server);
 
+
+
         Button searchInWlan = (Button)findViewById(R.id.settings_server_search);
         scrollView = (ScrollView)findViewById(R.id.server_settings_form);
         progressBar = (RelativeLayout)findViewById(R.id.server_settings_progress_layout);
@@ -56,6 +58,8 @@ public class ServerSettingActivity extends Activity {
         serverPort = (EditText)findViewById(R.id.server_port);
 
         countdownText = (TextView)findViewById(R.id.server_settings_progress_text);
+
+        progressBar.setVisibility(View.GONE);
 
         setDataOfSettings();
 

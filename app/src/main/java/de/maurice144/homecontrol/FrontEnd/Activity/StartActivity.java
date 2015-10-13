@@ -57,6 +57,7 @@ public class StartActivity extends ActionBarActivity {
 
 
     public void onMenu_StartControl_Click(View v) {
+        if(!checkServer()) return;
         if(!checkLogon()) return;
         if(!settings.isStructureAvailable()) {
             displayNoStructureDialog(settings);
@@ -72,7 +73,7 @@ public class StartActivity extends ActionBarActivity {
     }
 
     public void onMenu_StartSettings_Click(View v) {
-        if(!checkLogon()) return;
+        if(!checkServer()) return;
         startActivity(new Intent(this, SettingsActivity.class));
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
@@ -110,6 +111,37 @@ public class StartActivity extends ActionBarActivity {
                             dialog.cancel();
                         }
                     });
+
+            // create alert dialog
+            AlertDialog alertDialog = alertDialogBuilder.create();
+
+            // show it
+            alertDialog.show();
+            return false;
+        }
+        return true;
+    }
+
+
+    private boolean checkServer() {
+        settings = getSettings();
+        if(!settings.isServerConfigured()) {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+            // set title
+            alertDialogBuilder.setTitle("Servereinstellung");
+
+            // set dialog message
+            alertDialogBuilder
+                    .setMessage(getString(R.string.login_text))
+                    .setCancelable(false)
+                    .setPositiveButton("Konfigurieren", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            startActivity(new Intent(StartActivity.this,ServerSettingActivity.class));
+                            StartActivity.this.finish();
+                        }
+                    })
+                    .setNegativeButton("Abbrechen", null);
 
             // create alert dialog
             AlertDialog alertDialog = alertDialogBuilder.create();
