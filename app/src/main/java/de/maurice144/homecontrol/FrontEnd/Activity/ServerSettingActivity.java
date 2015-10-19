@@ -14,13 +14,13 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketTimeoutException;
 
+import de.maurice144.homecontrol.Communication.WebApi;
 import de.maurice144.homecontrol.Data.LocalSettings;
 import de.maurice144.homecontrol.R;
 
@@ -36,7 +36,7 @@ public class ServerSettingActivity extends Activity {
     EditText localServer;
     EditText serverPort;
     TextView countdownText;
-
+    Button testConnectionButton;
 
     private CountDownTimer countDownTimer;
 
@@ -60,6 +60,9 @@ public class ServerSettingActivity extends Activity {
 
         countdownText = (TextView)findViewById(R.id.server_settings_progress_text);
 
+        testConnectionButton = (Button)findViewById(R.id.settings_server_connect);
+
+
         progressBar.setVisibility(View.GONE);
 
         setDataOfSettings();
@@ -71,6 +74,14 @@ public class ServerSettingActivity extends Activity {
                 startSearchForServer();
             }
         });
+
+        testConnectionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                testConnectionAndSaveSetting();
+            }
+        });
+
     }
 
     private void startSearchForServer() {
@@ -120,7 +131,6 @@ public class ServerSettingActivity extends Activity {
                     return data;
                 }catch (SocketTimeoutException e){Log.e("receive","time out" + e.getMessage());}
                 catch (IOException e) {Log.e("receive","error 1");
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } finally {
                     if (socket != null) {
@@ -159,20 +169,23 @@ public class ServerSettingActivity extends Activity {
             countDownTimer.cancel();
         }
 
-        if(data == null) {
-            Toast.makeText(this,"Server nicht gefunden!",Toast.LENGTH_LONG).show();
-            return;
-        }
+        if(data != null) {
+            try {
+                String[] separated = data.split(";");
 
-        try {
-            String[] separated = data.split(";");
-            LocalSettings settings = new LocalSettings(this);
-            settings.setServerConfiguration(separated[1],separated[0], Integer.parseInt(separated[2]));
-            settings.Save();
-            setDataOfSettings();
-            return;
-        } catch (Exception ex) {
-            Log.e("Rec",ex.getMessage());
+                localServer.setText(separated[1]);
+                remoteServer.setText(separated[0]);
+                serverPort.setText(String.valueOf(separated[2]));
+
+                new AlertDialog.Builder(this)
+                        .setMessage("Ihr HomeControl Server wurde gefunden. Prüfen Sie nun die Verbindung")
+                        .setTitle("Serversuche")
+                        .setNegativeButton("OK",null).show();
+
+                return;
+            } catch (Exception ex) {
+                Log.e("Rec",ex.getMessage());
+            }
         }
 
         new AlertDialog.Builder(this)
@@ -182,6 +195,20 @@ public class ServerSettingActivity extends Activity {
 
     }
 
+    private void testConnectionAndSaveSetting() {
+        final String hostNameRemote;
+        final String hostNameLocal;
+        final int port;
+        AsyncTask<int,int,boolean> task = new AsyncTask<int, int, boolean>() {
+            @Override
+            protected boolean doInBackground(int... ints) {
+
+                new WebApi(ServerSettingActivity.this).CheckConnection();
+            }
+        }
+    }
+
+
     private void setDataOfSettings() {
         LocalSettings settings = new LocalSettings(this);
         localServer.setText(settings.getServerHostNameLocal());
@@ -189,5 +216,6 @@ public class ServerSettingActivity extends Activity {
         serverPort.setText(String.valueOf(settings.getServerPort()));
 
     }
+
 
 }

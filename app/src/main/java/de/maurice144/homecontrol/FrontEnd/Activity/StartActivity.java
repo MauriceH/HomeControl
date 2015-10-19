@@ -41,7 +41,7 @@ public class StartActivity extends ActionBarActivity {
         });
 
         if(getSettings().isLoggedIn()) {
-            if (!getSettings().isGcmRegistered()) {
+            if (!getSettings().isGcmRegistrationObtained()) {
                 if (checkPlayServices()) {
                     // Start IntentService to register this application with GCM.
                     Intent intent = new Intent(this, RegistrationIntentService.class);
@@ -145,36 +145,6 @@ public class StartActivity extends ActionBarActivity {
         // show it
         alertDialog.show();
         return false;
-    }
-
-    private boolean checkServer() {
-        settings = getSettings();
-        if(!settings.isServerConfigured()) {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-            // set title
-            alertDialogBuilder.setTitle("Servereinstellung");
-
-            // set dialog message
-            alertDialogBuilder
-                    .setMessage(getString(R.string.login_text))
-                    .setCancelable(false)
-                    .setPositiveButton("Konfigurieren", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            startActivity(new Intent(StartActivity.this,ServerSettingActivity.class));
-                            StartActivity.this.finish();
-                        }
-                    })
-                    .setNegativeButton("Abbrechen", null);
-
-            // create alert dialog
-            AlertDialog alertDialog = alertDialogBuilder.create();
-
-            // show it
-            alertDialog.show();
-            return false;
-        }
-        return true;
     }
 
 

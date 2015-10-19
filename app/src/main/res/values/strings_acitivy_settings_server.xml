@@ -7,7 +7,7 @@
     <string name="settings_server_hint_hostremote">Remote Host</string>
     <string name="settings_server_hint_port">10701</string>
 
-    <string name="settings_server_submit">Verbinden</string>
+    <string name="settings_server_submit">Verbindung testen</string>
     <string name="settings_server_searchServer">Server im WLAN suchen</string>
 
 </resources>
