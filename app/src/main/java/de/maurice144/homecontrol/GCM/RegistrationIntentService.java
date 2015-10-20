@@ -45,7 +45,6 @@ public class RegistrationIntentService extends IntentService {
     private void setTokenRegistration(String token) {
         LocalSettings localSettings = new LocalSettings(this);
         localSettings.setGcmToken(token);
-        localSettings.Save();
         startService(SynchronisationService.getServiceStartIntentByMode(this,SynchronisationService.STARTMODE_SendGcmToken));
     }
 

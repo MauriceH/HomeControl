@@ -9,13 +9,13 @@ public class ControlStateChangeRequest extends SecureDefaultRequest {
         super();
     }
 
-    public ControlStateChangeRequest(String deviceToken, int controlId, int state) {
+    public ControlStateChangeRequest(String deviceToken, long controlId, int state) {
         super(deviceToken);
         setControlId(controlId);
         setStateId(state);
     }
 
-    public void setControlId(int controlId) {
+    public void setControlId(long controlId) {
         try {
             data.put("ControlId", controlId);
         }catch (Exception ex) {

@@ -220,7 +220,6 @@ public class LoginActivity extends Activity {
                     if(result.isDoneCorrect()) {
                         if(result.getUserId() != null) {
                             settings.setNewActivation(result.getDeviceToken(), result.getUserId(), result.getFullName());
-                            settings.Save();
                             loginOk = true;
                         }
                     }

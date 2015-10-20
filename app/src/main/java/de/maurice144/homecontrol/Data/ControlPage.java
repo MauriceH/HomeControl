@@ -30,7 +30,7 @@ public class ControlPage {
             for(int i=0;i<items.length();i++) {
                 jsonObj = items.optJSONObject(i);
                 if(jsonObj != null) {
-                    controlGroup = new ControlGroup(jsonObj);
+                    controlGroup = new ControlGroup(jsonObj, context);
                     this.getGroups().add(controlGroup);
                 }
             }

@@ -199,13 +199,42 @@ public class ServerSettingActivity extends Activity {
         final String hostNameRemote;
         final String hostNameLocal;
         final int port;
-        AsyncTask<int,int,boolean> task = new AsyncTask<int, int, boolean>() {
-            @Override
-            protected boolean doInBackground(int... ints) {
 
-                new WebApi(ServerSettingActivity.this).CheckConnection();
+        hostNameLocal = localServer.getText().toString();
+        hostNameRemote = remoteServer.getText().toString();
+        port = Integer.parseInt(serverPort.getText().toString());
+
+        AsyncTask<Integer,Integer,Boolean> task = new AsyncTask<Integer, Integer, Boolean>() {
+            @Override
+            protected Boolean doInBackground(Integer... ints) {
+                return new WebApi(ServerSettingActivity.this,hostNameLocal,port).CheckConnection();
             }
-        }
+
+            @Override
+            protected void onPostExecute(Boolean aBoolean) {
+                super.onPostExecute(aBoolean);
+
+                if(aBoolean) {
+
+                    LocalSettings localSettings = new LocalSettings(ServerSettingActivity.this);
+
+                    localSettings.setServerConfiguration(hostNameLocal,hostNameRemote,port);
+
+                    new AlertDialog.Builder(ServerSettingActivity.this)
+                            .setMessage("Verbindung erfolgreich")
+                            .setTitle("Server")
+                            .setNegativeButton("OK",null).show();
+                } else {
+                    new AlertDialog.Builder(ServerSettingActivity.this)
+                            .setMessage("Verbindung nicht erfolgreich")
+                            .setTitle("Server")
+                            .setNegativeButton("OK",null).show();
+                }
+
+
+            }
+        };
+        task.execute(0);
     }
 
 

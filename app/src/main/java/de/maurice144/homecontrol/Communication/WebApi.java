@@ -21,15 +21,21 @@ public class WebApi {
 
     public WebApi(Context context) {
         this.context = context;
-        restcon = new RestApiConnection(settings);
         settings = new LocalSettings(context);
+        restcon = new RestApiConnection(settings.getServerHostNameLocal(),settings.getServerPort());
     }
-
 
     public WebApi(Context context,LocalSettings settings) {
         this.context = context;
-        restcon = new RestApiConnection(settings);
         this.settings = settings;
+        restcon = new RestApiConnection(settings.getServerHostNameLocal(),settings.getServerPort());
+    }
+
+
+    public WebApi(Context context,String hostName, int port) {
+        this.context = context;
+        settings = new LocalSettings(context);
+        restcon = new RestApiConnection(hostName, port);
     }
 
 
@@ -72,12 +78,13 @@ public class WebApi {
     public boolean CheckConnection() {
 
         try {
-            JSONObject jsonResult = restcon.sendPostData("test",null);
+            JSONObject jsonResult = restcon.callGet("test");
             if (jsonResult != null && !jsonResult.toString().equals("")) {
-
+                DefaultResult result = new DefaultResult(jsonResult);
+                return result.isDoneCorrect();
             }
         } catch (Exception ex) {
-
+            return false;
         }
         return false;
     }

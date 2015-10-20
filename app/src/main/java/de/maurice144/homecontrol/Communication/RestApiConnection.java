@@ -9,8 +9,6 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import de.maurice144.homecontrol.Data.LocalSettings;
-
 public class RestApiConnection {
 
     private static final String CONST_HOSTNAME = "192.168.137.1:10701";
@@ -19,10 +17,12 @@ public class RestApiConnection {
     private static final String CONTENT_TYPE_JSON = "application/json";
     private static final String CONTENT_TYPE_BYTES = "binary/octet-stream";
 
-    private LocalSettings settings;
+    private String hostName;
+    private int port;
 
-    public RestApiConnection(LocalSettings settings) {
-        this.settings = settings;
+    public RestApiConnection(String hostName, int port) {
+        this.hostName = hostName;
+        this.port = port;
     }
 
 
@@ -38,6 +38,18 @@ public class RestApiConnection {
         return ret;
     }
 
+    public JSONObject callGet(String url) throws Exception {
+        JSONObject ret = null;
+
+        String jsonString = getResultForGetMethod(url, CONTENT_TYPE_JSON);
+        if (!jsonString.equals("")) {
+            ret = new JSONObject(jsonString);
+        }
+
+        return ret;
+    }
+
+
 
     private String getResultForPostMethod(String pUrl, byte[] bytes, String contentType) throws Exception {
         OutputStream os = null;
@@ -45,10 +57,13 @@ public class RestApiConnection {
         HttpURLConnection con = null;
         StringBuilder builder = new StringBuilder();
 
+        String address = hostName + ":" + String.valueOf(port);
+
         try {
-            con = initConnection(settings.getServerHostNameLocal(),pUrl, contentType);
+            con = initConnection(address,pUrl, contentType);
             con.setConnectTimeout(4000);
             con.setFixedLengthStreamingMode(bytes.length);
+            con.setRequestMethod("POST");
             os = con.getOutputStream();
             os.write(bytes);
             os.flush();
@@ -83,10 +98,43 @@ public class RestApiConnection {
         HttpURLConnection con;
         con = (HttpURLConnection) (new URL(address + url)).openConnection();
         con.setRequestProperty("CONTENT-TYPE", requestValue);
-        con.setRequestMethod("POST");
+
         return con;
     }
 
+
+    private String getResultForGetMethod(String pUrl, String contentType) throws Exception {
+        OutputStream os = null;
+        InputStream is = null;
+        HttpURLConnection con = null;
+        StringBuilder builder = new StringBuilder();
+
+        String address = hostName + ":" + String.valueOf(port);
+
+        try {
+            con = initConnection(address,pUrl, contentType);
+            con.setConnectTimeout(4000);
+            con.setRequestMethod("GET");
+            is = con.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
+            String line;
+            while ((line = reader.readLine()) != null)
+                builder.append(line);
+
+            is.close();
+
+        } finally {
+            if (os != null) os.close();
+            if (is != null) is.close();
+
+            if (con != null)
+                con.disconnect();
+
+        }
+
+        return builder.toString();
+    }
 
 
 

@@ -11,6 +11,8 @@ import com.google.android.gms.gcm.Task;
 
 import org.json.JSONObject;
 
+import de.maurice144.homecontrol.Communication.WebApi;
+
 /**
  * Created by Maurice on 22.07.2015.
  */

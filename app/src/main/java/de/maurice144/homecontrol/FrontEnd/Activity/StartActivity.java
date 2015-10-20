@@ -83,7 +83,6 @@ public class StartActivity extends ActionBarActivity {
         LocalSettings settings = new LocalSettings(this);
         settings.clearAccountData();
         settings.setGcmToken(null);
-        settings.Save();
         Toast.makeText(this,"Aktivierung gelöscht", Toast.LENGTH_SHORT).show();
     }
 

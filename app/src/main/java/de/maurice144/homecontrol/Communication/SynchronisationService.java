@@ -69,7 +69,7 @@ public class SynchronisationService extends IntentService {
 
 
         settings.setStructureAvailable(false);
-        settings.Save();
+
 
 
         ControlStructureResult conStrcResult;
@@ -83,7 +83,6 @@ public class SynchronisationService extends IntentService {
         if(!conStrcResult.isDoneCorrect()) {
             if(conStrcResult.AuthentificationNotValid()) {
                 settings.clearAccountData();
-                settings.Save();
             }
             Log.e("ControlStructure", "Error sync control structure! Code: " + String.valueOf(conStrcResult.intErrorCode()));
             return;
@@ -111,7 +110,6 @@ public class SynchronisationService extends IntentService {
 
 
         settings.setStructureAvailable(true);
-        settings.Save();
 
 
 
@@ -133,11 +131,9 @@ public class SynchronisationService extends IntentService {
             if(result != null) {
                 if(result.isDoneCorrect()) {
                     settings.setGcmTokenTransfered();
-                    settings.Save();
                 } else{
                     if(result.AuthentificationNotValid()) {
                         settings.clearAccountData();
-                        settings.Save();
                     }
                 }
             }

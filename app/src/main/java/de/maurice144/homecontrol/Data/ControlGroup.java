@@ -23,8 +23,9 @@ public class ControlGroup {
     protected ViewGroup viewGroup;
     private TextView titleTextView;
 
-    public ControlGroup(JSONObject jsonObject) {
+    public ControlGroup(JSONObject jsonObject, Context context) {
         this.data = jsonObject;
+        Context context1 = context;
         this.controls = new ArrayList<ControlGroupItemBase>();
 
         JSONArray items = this.data.optJSONArray("Controls");
@@ -39,7 +40,7 @@ public class ControlGroup {
                     controlGroupItemBase = null;
 
                     if(objType.equalsIgnoreCase(ControlGroupItem_Light.KEY_CONTROL_TYPE)) {
-                        controlGroupItemBase = new ControlGroupItem_Light(jsonObj);
+                        controlGroupItemBase = new ControlGroupItem_Light(context, jsonObj);
                     }
                     if(objType.equalsIgnoreCase(ControlGroupItem_Tv.KEY_CONTROL_TYPE)) {
                         controlGroupItemBase = new ControlGroupItem_Tv(jsonObj);

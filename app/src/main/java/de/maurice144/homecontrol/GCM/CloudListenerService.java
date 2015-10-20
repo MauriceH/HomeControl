@@ -49,7 +49,6 @@ public class CloudListenerService extends GcmListenerService {
     private void logOffUser() {
         LocalSettings settings = new LocalSettings(this);
         settings.clearAccountData();
-        settings.Save();
     }
 
     private void controlStateChanged(Bundle data) {

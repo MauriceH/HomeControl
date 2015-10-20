@@ -125,7 +125,7 @@ public class LocalSettings {
 
     public void setServerConfiguration(String hostNameLocal, String hostNameRemote,int port) {
         SharedPreferences.Editor edit =  prefs.edit();
-        edit.putBoolean(KEY_SERVER_CONFIGURED, false);
+        edit.putBoolean(KEY_SERVER_CONFIGURED, true);
         edit.putString(KEY_SERVER_HOST_NAME_LOCAL, hostNameLocal);
         edit.putString(KEY_SERVER_HOST_NAME_REMOTE, hostNameRemote);
         edit.putInt(KEY_SERVER_PORT, port);
