@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import de.maurice144.homecontrol.Data.ControlGroup;
 import de.maurice144.homecontrol.Data.ControlGroupItemBase;
 import de.maurice144.homecontrol.Data.ControlGroupItem_Light;
 import de.maurice144.homecontrol.Data.ControlPage;
+import de.maurice144.homecontrol.FrontEnd.Activity.MainControlActivity;
 import de.maurice144.homecontrol.R;
 
 /**
@@ -45,7 +47,7 @@ public class Control_Main_Fragment extends ControlBaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.e("Fragement created",String.valueOf(page.getId()));
+        Log.e("Fragement created", String.valueOf(page.getId()));
         View rootView = inflater.inflate(R.layout.fragment_controlpage, container, false);
 
         LinearLayout groupParent = (LinearLayout)rootView.findViewById(R.id.control_scrollContainer);
@@ -56,6 +58,13 @@ public class Control_Main_Fragment extends ControlBaseFragment {
             groupView = (LinearLayout)group.getViewGroup(inflater,groupParent);
             groupParent.addView(groupView);
         }
+
+        rootView.post(new Runnable() {
+            @Override
+            public void run() {
+                setState();
+            }
+        });
 
         return rootView;
     }
@@ -71,5 +80,25 @@ public class Control_Main_Fragment extends ControlBaseFragment {
         return this.page;
     }
 
+    public void setState() {
+        MainControlActivity activity = (MainControlActivity)getActivity();
+        if(page == null) {
+            return;
+        }
+        JSONObject obj;
+        for(int i=0;i<activity.states.length();i++) {
+            try {
+                obj = activity.states.getJSONObject(i);
+                ControlGroupItemBase cont = page.RecursiveFindControlById(obj.optLong("Id", 0));
+                if(cont != null) {
+                    cont.SetState(obj.optInt("State"));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
 }
 

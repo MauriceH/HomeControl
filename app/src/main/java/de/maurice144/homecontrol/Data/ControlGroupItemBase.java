@@ -45,13 +45,14 @@ public abstract class ControlGroupItemBase {
         //if(viewGroup == null) {
             viewGroup = onCreateView(inflater,parentView);
         //}
+        SetState(state);
         return viewGroup;
     }
 
 
     protected abstract ViewGroup onCreateView(LayoutInflater inflater, ViewGroup parentView);
 
-    public abstract void SetState(Bundle data);
+    public abstract void SetState(int state);
 
     protected void SaveNewState(int newState) {
         state = newState;

@@ -80,4 +80,13 @@ public class ControlPageAdapter extends FragmentPagerAdapter {
         }
         return "Fehler";
     }
+
+
+    public void resyncStates() {
+        for(Control_Main_Fragment fragment : fragments) {
+            if(fragment != null) {
+                fragment.setState();
+            }
+        }
+    }
 }

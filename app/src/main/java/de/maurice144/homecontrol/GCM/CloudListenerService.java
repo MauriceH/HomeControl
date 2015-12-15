@@ -5,6 +5,8 @@ import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
@@ -52,6 +54,9 @@ public class CloudListenerService extends GcmListenerService {
     }
 
     private void controlStateChanged(Bundle data) {
+
+
+
         Intent intent = new Intent("de.maurice144.homecontrol.event.control");
         intent.putExtras(data);
         intent.putExtra("mode", "controlstatechanged");

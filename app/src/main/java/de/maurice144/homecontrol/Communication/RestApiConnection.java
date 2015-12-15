@@ -112,7 +112,7 @@ public class RestApiConnection {
         String address = hostName + ":" + String.valueOf(port);
 
         try {
-            con = initConnection(address,pUrl, contentType);
+            con = initConnection(address, pUrl, contentType);
             con.setConnectTimeout(4000);
             con.setRequestMethod("GET");
             is = con.getInputStream();

@@ -43,12 +43,14 @@ public class ControlGroup {
                         controlGroupItemBase = new ControlGroupItem_Light(context, jsonObj);
                     }
                     if(objType.equalsIgnoreCase(ControlGroupItem_Tv.KEY_CONTROL_TYPE)) {
-                        controlGroupItemBase = new ControlGroupItem_Tv(jsonObj);
+                        controlGroupItemBase = new ControlGroupItem_Tv(jsonObj, context);
                     }
                     if(objType.equalsIgnoreCase(ControlGroupItem_UpDown.KEY_CONTROL_TYPE)) {
-                        controlGroupItemBase = new ControlGroupItem_UpDown(jsonObj);
+                        controlGroupItemBase = new ControlGroupItem_UpDown(jsonObj, context);
                     }
-
+                    if(controlGroupItemBase == null) {
+                        continue;
+                    }
                     this.getControls().add(controlGroupItemBase);
                 }
             }
