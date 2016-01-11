@@ -82,7 +82,7 @@ public class Control_Main_Fragment extends ControlBaseFragment {
 
     public void setState() {
         MainControlActivity activity = (MainControlActivity)getActivity();
-        if(page == null) {
+        if(page == null || activity.states == null) {
             return;
         }
         JSONObject obj;

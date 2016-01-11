@@ -73,7 +73,10 @@ public class MainControlActivity extends ActionBarActivity implements ActionBar.
 
                 if(messageMode.equalsIgnoreCase("controlstatechanged")) {
                     long controlId = Long.parseLong(intent.getStringExtra("controlid"));
-                    int state = intent.getStringExtra("state").equals("on") ? 1 : 0;
+
+                    int state;
+                    String newState = intent.getStringExtra("state");
+                    state = newState.equals("on") ? 1 : newState.equals("add") ? 2 : 0;
                     setControlState(controlId,state);
                     if(states == null) {
                         return;
@@ -142,13 +145,18 @@ public class MainControlActivity extends ActionBarActivity implements ActionBar.
         }
 
 
+        requestControlStates();
+
+    }
+
+    private void requestControlStates() {
         AsyncTask<String,String,String> task = new AsyncTask<String, String, String>() {
             @Override
             protected String doInBackground(String... params) {
                 try {
                     WebApi api = new WebApi(MainControlActivity.this);
                     final ControlStateResult result =  api.ControlStates(new SecureDefaultRequest(new LocalSettings(MainControlActivity.this).getDeviceToken()));
-                    if(!result.isDoneCorrect()) {
+                    if(result == null || !result.isDoneCorrect()) {
                         return null;
                     }
 
@@ -166,13 +174,12 @@ public class MainControlActivity extends ActionBarActivity implements ActionBar.
 
 
                 } catch (Exception ex) {
-                    Log.e("statesync",ex.getMessage(),ex);
+                    Log.e("statesync", ex.getMessage(), ex);
                 }
                 return null;
             }
         };
         task.execute();
-
     }
 
 

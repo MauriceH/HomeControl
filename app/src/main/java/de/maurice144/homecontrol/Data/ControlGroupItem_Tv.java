@@ -1,5 +1,6 @@
 package de.maurice144.homecontrol.Data;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -28,12 +29,10 @@ public class ControlGroupItem_Tv  extends ControlGroupItemBase {
     private TextView title;
     private Switch switchOnOff;
 
-    private final Context context;
     private CompoundButton.OnCheckedChangeListener listener;
 
-    public ControlGroupItem_Tv(JSONObject jsonObject, Context context) {
-        super(jsonObject);
-        this.context = context;
+    public ControlGroupItem_Tv(JSONObject jsonObject, Activity activity) {
+        super(activity, jsonObject);
     }
 
     @Override
@@ -51,13 +50,13 @@ public class ControlGroupItem_Tv  extends ControlGroupItemBase {
                 final int newState = isChecked ? 1 : 0;
                 if (ControlGroupItem_Tv.this.getState() != newState) {
                     ControlGroupItem_Tv.this.SaveNewState(newState);
-                    final LocalSettings settings = new LocalSettings(context);
+                    final LocalSettings settings = new LocalSettings(activity);
 
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                new WebApi(context).SendControlChange(new ControlStateChangeRequest(settings.getDeviceToken(), ControlGroupItem_Tv.this.getId(), newState));
+                                new WebApi(activity).SendControlChange(new ControlStateChangeRequest(settings.getDeviceToken(), ControlGroupItem_Tv.this.getId(), newState));
                             } catch (Exception ex) {
                                 Log.e("err", ex.getMessage(), ex);
                             }

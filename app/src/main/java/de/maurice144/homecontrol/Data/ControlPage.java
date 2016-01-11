@@ -1,6 +1,6 @@
 package de.maurice144.homecontrol.Data;
 
-import android.content.Context;
+import android.app.Activity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,9 +18,9 @@ public class ControlPage {
     private ArrayList<ControlGroup> groups;
     private Control_Main_Fragment fragement;
 
-    public ControlPage(JSONObject jsonObject,Context context) {
+    public ControlPage(JSONObject jsonObject,Activity activity) {
         this.data = jsonObject;
-        this.groups = new ArrayList<ControlGroup>();
+        this.groups = new ArrayList<>();
         this.fragement = new Control_Main_Fragment();
 
         JSONArray items = this.data.optJSONArray("Groups");
@@ -30,7 +30,7 @@ public class ControlPage {
             for(int i=0;i<items.length();i++) {
                 jsonObj = items.optJSONObject(i);
                 if(jsonObj != null) {
-                    controlGroup = new ControlGroup(jsonObj, context);
+                    controlGroup = new ControlGroup(jsonObj, activity);
                     this.getGroups().add(controlGroup);
                 }
             }

@@ -10,6 +10,8 @@
     <color name="selectedtransparent">#8800AAFF</color>
 
     <color name="updown_default">#DCDCDC</color>
+    <color name="updown_pressed">#55af5d</color>
+    <color name="updown_active">#94bde4</color>
 
 
 </resources>

@@ -1,5 +1,6 @@
 package de.maurice144.homecontrol.Data;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -23,9 +24,9 @@ public class ControlGroup {
     protected ViewGroup viewGroup;
     private TextView titleTextView;
 
-    public ControlGroup(JSONObject jsonObject, Context context) {
+    public ControlGroup(JSONObject jsonObject, Activity activity) {
         this.data = jsonObject;
-        Context context1 = context;
+        Context context1 = activity;
         this.controls = new ArrayList<ControlGroupItemBase>();
 
         JSONArray items = this.data.optJSONArray("Controls");
@@ -40,13 +41,13 @@ public class ControlGroup {
                     controlGroupItemBase = null;
 
                     if(objType.equalsIgnoreCase(ControlGroupItem_Light.KEY_CONTROL_TYPE)) {
-                        controlGroupItemBase = new ControlGroupItem_Light(context, jsonObj);
+                        controlGroupItemBase = new ControlGroupItem_Light(activity, jsonObj);
                     }
                     if(objType.equalsIgnoreCase(ControlGroupItem_Tv.KEY_CONTROL_TYPE)) {
-                        controlGroupItemBase = new ControlGroupItem_Tv(jsonObj, context);
+                        controlGroupItemBase = new ControlGroupItem_Tv(jsonObj, activity);
                     }
                     if(objType.equalsIgnoreCase(ControlGroupItem_UpDown.KEY_CONTROL_TYPE)) {
-                        controlGroupItemBase = new ControlGroupItem_UpDown(jsonObj, context);
+                        controlGroupItemBase = new ControlGroupItem_UpDown(jsonObj, activity);
                     }
                     if(controlGroupItemBase == null) {
                         continue;

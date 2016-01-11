@@ -1,5 +1,6 @@
 package de.maurice144.homecontrol.Data;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import org.json.JSONObject;
 
 import de.maurice144.homecontrol.Communication.Requests.ControlStateChangeRequest;
+import de.maurice144.homecontrol.Communication.Results.DefaultResult;
 import de.maurice144.homecontrol.Communication.WebApi;
 import de.maurice144.homecontrol.R;
 
@@ -26,15 +28,13 @@ public class ControlGroupItem_Light extends ControlGroupItemBase {
     private TextView title;
     private Switch switchOnOff;
 
-    private Context context;
     private CompoundButton.OnCheckedChangeListener listener;
 
 
 
 
-    public ControlGroupItem_Light(Context context, JSONObject jsonObject) {
-        super(jsonObject);
-        this.context = context;
+    public ControlGroupItem_Light(Activity activity, JSONObject jsonObject) {
+        super(activity, jsonObject);
     }
 
     @Override
@@ -53,13 +53,18 @@ public class ControlGroupItem_Light extends ControlGroupItemBase {
                 final int newState = isChecked ? 1 : 0;
                 if (ControlGroupItem_Light.this.getState() != newState) {
                     ControlGroupItem_Light.this.SaveNewState(newState);
-                    final LocalSettings settings = new LocalSettings(context);
+                    final LocalSettings settings = new LocalSettings(activity);
 
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                new WebApi(context).SendControlChange(new ControlStateChangeRequest(settings.getDeviceToken(), ControlGroupItem_Light.this.getId(), newState));
+                                DefaultResult defaultResult;
+                                ControlStateChangeRequest request = new ControlStateChangeRequest(settings.getDeviceToken(), ControlGroupItem_Light.this.getId(), newState);
+                                defaultResult = new WebApi(activity).SendControlChange(request);
+                                if(defaultResult == null || !defaultResult.isDoneCorrect()) {
+                                    displayStateChangeErrorToast(defaultResult);
+                                }
                             } catch (Exception ex) {
                                 Log.e("err", ex.getMessage(), ex);
                             }

@@ -1,5 +1,6 @@
 package de.maurice144.homecontrol.Data;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import org.json.JSONObject;
 
 import de.maurice144.homecontrol.Communication.Requests.ControlStateChangeRequest;
+import de.maurice144.homecontrol.Communication.Results.DefaultResult;
 import de.maurice144.homecontrol.Communication.WebApi;
 import de.maurice144.homecontrol.R;
 
@@ -30,11 +32,9 @@ public class ControlGroupItem_UpDown extends ControlGroupItemBase {
     private ImageButton buttonUp;
     private Button buttonStop;
 
-    private final Context context;
 
-    public ControlGroupItem_UpDown(JSONObject jsonObject, Context context) {
-        super(jsonObject);
-        this.context = context;
+    public ControlGroupItem_UpDown(JSONObject jsonObject, Activity activity) {
+        super(activity, jsonObject);
     }
 
     @Override
@@ -54,14 +54,26 @@ public class ControlGroupItem_UpDown extends ControlGroupItemBase {
                 final int newState = 2;
                 if(ControlGroupItem_UpDown.this.getState() != newState ) {
                     ControlGroupItem_UpDown.this.SaveNewState(newState);
-                    final LocalSettings settings = new LocalSettings(context);
+                    final LocalSettings settings = new LocalSettings(activity);
 
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                new WebApi(context).SendControlChange(new ControlStateChangeRequest(settings.getDeviceToken(),ControlGroupItem_UpDown.this.getId(),newState));
+                                ControlStateChangeRequest request = new ControlStateChangeRequest(settings.getDeviceToken(), ControlGroupItem_UpDown.this.getId(), newState);
+                                DefaultResult defaultResult = new WebApi(activity).SendControlChange(request);
+                                if(defaultResult == null || !defaultResult.isDoneCorrect()) {
+                                    displayStateChangeErrorToast(defaultResult);
+                                    return;
+                                }
+                                activity.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        SetState(newState);
+                                    }
+                                });
                             }catch (Exception ex) {
+                                displayStateChangeErrorToast(null);
                                 Log.e("err", ex.getMessage(), ex);
                             }
                         }
@@ -77,14 +89,26 @@ public class ControlGroupItem_UpDown extends ControlGroupItemBase {
                 final int newState = 1;
                 if(ControlGroupItem_UpDown.this.getState() != newState ) {
                     ControlGroupItem_UpDown.this.SaveNewState(newState);
-                    final LocalSettings settings = new LocalSettings(context);
+                    final LocalSettings settings = new LocalSettings(activity);
 
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                new WebApi(context).SendControlChange(new ControlStateChangeRequest(settings.getDeviceToken(),ControlGroupItem_UpDown.this.getId(),newState));
+                                ControlStateChangeRequest request = new ControlStateChangeRequest(settings.getDeviceToken(), ControlGroupItem_UpDown.this.getId(), newState);
+                                DefaultResult defaultResult = new WebApi(activity).SendControlChange(request);
+                                if(defaultResult == null || !defaultResult.isDoneCorrect()) {
+                                    displayStateChangeErrorToast(defaultResult);
+                                    return;
+                                }
+                                activity.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        SetState(newState);
+                                    }
+                                });
                             }catch (Exception ex) {
+                                displayStateChangeErrorToast(null);
                                 Log.e("err", ex.getMessage(), ex);
                             }
                         }
@@ -101,14 +125,26 @@ public class ControlGroupItem_UpDown extends ControlGroupItemBase {
                 final int newState = 0;
                 if(ControlGroupItem_UpDown.this.getState() != newState ) {
                     ControlGroupItem_UpDown.this.SaveNewState(newState);
-                    final LocalSettings settings = new LocalSettings(context);
+                    final LocalSettings settings = new LocalSettings(activity);
 
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                new WebApi(context).SendControlChange(new ControlStateChangeRequest(settings.getDeviceToken(),ControlGroupItem_UpDown.this.getId(),newState));
+                                ControlStateChangeRequest request = new ControlStateChangeRequest(settings.getDeviceToken(), ControlGroupItem_UpDown.this.getId(), newState);
+                                DefaultResult defaultResult = new WebApi(activity).SendControlChange(request);
+                                if(defaultResult == null || !defaultResult.isDoneCorrect()) {
+                                    displayStateChangeErrorToast(defaultResult);
+                                    return;
+                                }
+                                activity.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        SetState(newState);
+                                    }
+                                });
                             }catch (Exception ex) {
+                                displayStateChangeErrorToast(null);
                                 Log.e("err", ex.getMessage(), ex);
                             }
                         }
@@ -126,6 +162,23 @@ public class ControlGroupItem_UpDown extends ControlGroupItemBase {
     @Override
     public void SetState(int state) {
         SaveNewState(state);
+        switch (state) {
+            case 0:
+                buttonStop.setSelected(true);
+                buttonUp.setSelected(false);
+                buttonDown.setSelected(false);
+                break;
+            case 1:
+                buttonStop.setSelected(false);
+                buttonUp.setSelected(true);
+                buttonDown.setSelected(false);
+                break;
+            case 2:
+                buttonStop.setSelected(false);
+                buttonUp.setSelected(false);
+                buttonDown.setSelected(true);
+                break;
+        }
 
     }
 }

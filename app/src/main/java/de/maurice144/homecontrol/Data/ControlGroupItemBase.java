@@ -1,23 +1,21 @@
 package de.maurice144.homecontrol.Data;
 
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
-import android.os.Bundle;
+import android.app.Activity;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.gms.gcm.Task;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
-import de.maurice144.homecontrol.Communication.WebApi;
+import de.maurice144.homecontrol.Communication.Results.DefaultResult;
 
 /**
  * Created by Maurice on 22.07.2015.
  */
 public abstract class ControlGroupItemBase {
 
+
+    protected final Activity activity;
     private JSONObject data;
 
     protected ViewGroup viewGroup;
@@ -26,8 +24,9 @@ public abstract class ControlGroupItemBase {
 
 
 
-    public ControlGroupItemBase(JSONObject jsonObject) {
+    public ControlGroupItemBase(Activity activity, JSONObject jsonObject) {
         this.data = jsonObject;
+        this.activity = activity;
     }
 
     public long getId() {
@@ -60,6 +59,23 @@ public abstract class ControlGroupItemBase {
 
     protected int getState() {
         return state;
+    }
+
+
+    protected void displayStateChangeErrorToast(final DefaultResult defaultResult) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                String message;
+                if (defaultResult == null) {
+                    message = "Die Verbindung konnte nicht aufgebaut werden.";
+                } else {
+                    message = String.format("Veränderung nicht möglich! Fehlercode: %d", defaultResult.intErrorCode());
+                }
+                Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
 }
