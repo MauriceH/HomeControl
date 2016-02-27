@@ -26,6 +26,7 @@ public class CloudListenerService extends GcmListenerService {
     private static final int MSG_TYPE_ID_CONTROLSTATE = 2;
     private static final int MSG_TYPE_ID_STRUCTURECHANGE = 3;
     private static final int MSG_TYPE_ID_TEXTMESSAGE = 4;
+    private static final int MSG_TYPE_ID_DOORBELL = 5;
 
     @Override
     public void onMessageReceived(String from, Bundle data) {
@@ -44,6 +45,19 @@ public class CloudListenerService extends GcmListenerService {
             case MSG_TYPE_ID_TEXTMESSAGE:
                 displayTextNotification(data);
                 break;
+            case MSG_TYPE_ID_DOORBELL:
+                doorBell(data);
+                break;
+        }
+
+    }
+
+    private void doorBell(Bundle data) {
+        try {
+            ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_RING, ToneGenerator.MAX_VOLUME);
+            tg.startTone(ToneGenerator.TONE_CDMA_MED_PBX_L,1500);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
@@ -54,8 +68,6 @@ public class CloudListenerService extends GcmListenerService {
     }
 
     private void controlStateChanged(Bundle data) {
-
-
 
         Intent intent = new Intent("de.maurice144.homecontrol.event.control");
         intent.putExtras(data);

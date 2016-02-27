@@ -80,10 +80,12 @@ public class StartActivity extends ActionBarActivity {
 
     public void onMenu_StartMusic_Click(View v) {
         // TODO Temp for app test
-        LocalSettings settings = new LocalSettings(this);
-        settings.clearAccountData();
-        settings.setGcmToken(null);
-        Toast.makeText(this,"Aktivierung gelöscht", Toast.LENGTH_SHORT).show();
+//        LocalSettings settings = new LocalSettings(this);
+//        settings.clearAccountData();
+//        settings.setGcmToken(null);
+//        Toast.makeText(this,"Aktivierung gelöscht", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,DimmerActivity.class);
+        startActivity(intent);
     }
 
 
