@@ -8,8 +8,8 @@ android {
         applicationId "de.maurice144.homecontrol"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 3
-        versionName "1.1.4"
+        versionCode 4
+        versionName "1.1.5"
     }
     buildTypes {
         release {
