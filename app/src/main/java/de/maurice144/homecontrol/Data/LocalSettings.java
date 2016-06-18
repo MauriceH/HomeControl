@@ -1,5 +1,6 @@
 package de.maurice144.homecontrol.Data;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -132,4 +133,10 @@ public class LocalSettings {
         edit.apply();
     }
 
+    @SuppressLint("CommitPrefEdits")
+    public void setRemoveServerAddress(String address) {
+        SharedPreferences.Editor edit =  prefs.edit();
+        edit.putString(KEY_SERVER_HOST_NAME_REMOTE, address);
+        edit.commit();
+    }
 }

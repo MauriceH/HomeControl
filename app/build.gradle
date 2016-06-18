@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    buildToolsVersion "23.0.3"
     apply plugin: 'com.google.gms.google-services'
     defaultConfig {
         applicationId "de.maurice144.homecontrol"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 4
-        versionName "1.1.5"
+        versionCode 5
+        versionName "1.1.6"
     }
     buildTypes {
         release {
