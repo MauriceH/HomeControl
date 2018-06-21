@@ -10,9 +10,6 @@ import com.google.android.gms.iid.InstanceID;
 import de.maurice144.homecontrol.Communication.SynchronisationService;
 import de.maurice144.homecontrol.Data.LocalSettings;
 
-/**
- * Created by mhessing on 27.07.2015.
- */
 public class RegistrationIntentService extends IntentService {
 
     public static final String API_PROJECT_ID = "984670671333";

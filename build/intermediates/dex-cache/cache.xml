@@ -2,186 +2,337 @@
 <items version="2" >
 
     <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.5.0\jars\classes.jar"
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\f7436191bba9b04f98e4bca77cf73acefe602d16\output\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.3"
+        optimize="true"
+        revision="25.0.0"
         sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-appindexing-7.5.0_38dac2435b477a648a599ea9882aee5a062ef56e.jar" />
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_869b4c11629110b558ca060e4ebc167a5bbbc22e.jar" />
     </item>
     <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.5.0\jars\classes.jar"
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\9bb8a08001698955d1e8934b13bc2389b9d09101\output\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="false"
-        revision="23.0.3"
-        sha1="02bac2dc792d78241077861566f2c82da955e7fa">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-games-7.5.0_243dfe5f7774a69757b1f27d3f87f32c8a3385ab.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_aa41aa01b966f0d78536e69825f0c100428afeee.jar" />
     </item>
     <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.5.0\jars\classes.jar"
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\149d36e43e93b910f921494a37476f3fc33a38c2\output\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="false"
-        revision="23.0.3"
-        sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-cast-7.5.0_beea923a4673f4baa9ebdd262fe2a87ed8c9d0ae.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_0fbaebf1af2cf9f9cc67f5d0f616692f92f7f6f3.jar" />
     </item>
     <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.5.0\jars\classes.jar"
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\e6f71644cdf29b4a264bb06f7ec9d5172400f2b1\output\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.3"
-        sha1="a78183f30e769a98ab4820794f597763088d3065">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-base-7.5.0_29ccc3445b1f3129a943c154e6bdcf356c707307.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.android.support-support-v4-22.2.1_7e3efaba5272c877be153e2855bc0a6f3ca85c22.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="1e98ef3f124bb7a11f8575f9ff5dfea330b61b6f">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-location-7.5.0_b96a876a47f599c702db1fb837c1a24157fc7aa5.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.android.support-appcompat-v7-22.2.1_745df1ee51d8c4dea4189c90093d0c771c4815a2.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
+        optimize="true"
+        revision="25.0.0"
         sha1="1a6411087ab88ce5542f593e63a2752b6b0d6f1a">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-safetynet-7.5.0_f2e8eeefdeb395ceeae6eb7d7d0f1fa567a357f6.jar" />
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_f7b1eb0948cc4738f6f13edf02be9e1f1210c503.jar" />
     </item>
     <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.5.0\jars\classes.jar"
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\a61cdd35317cc2ab30cb2a779ffa931bbabadf42\output\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.3"
-        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-wallet-7.5.0_bbfa261c721ca104cab09102db037b9024210238.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_a3df4f4d85645b516f0632c7a23ad89d19a8a5c2.jar" />
     </item>
     <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.5.0\jars\classes.jar"
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\a66f41b2f602e4a88420f50b816c469c24e35ab2\output\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.3"
-        sha1="e7b35244f50663b3f8d150714bca9ecd7a290da1">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-analytics-7.5.0_7e6769ee6c650c6661b27f745675fdabfc74bf59.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_2575f20237d12a75479ad26d0e232fe03e678e0e.jar" />
     </item>
     <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.5.0\jars\classes.jar"
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\a20a1b801451c73714fb492b8e3a71d61b7c857d\output\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.3"
-        sha1="63ec6e9f4fe5482a7447d0f3091b8e543a02554c">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-appinvite-7.5.0_6034b2cd7d39324caf299db41cfc4f02972dc44c.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="a78183f30e769a98ab4820794f597763088d3065">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_8bfe878969634da088ae73a613c70aa4a018458f.jar" />
     </item>
     <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.5.0\jars\classes.jar"
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\76ea8fcca713a3f5fd1f730a328179b335b58796\output\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.3"
-        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-wearable-7.5.0_973e0cb0b4b6ba5ed440631e11307c6570278c0d.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="02bac2dc792d78241077861566f2c82da955e7fa">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_052d9afe964e65ce39ab4cac4dfd7156df6f6bcf.jar" />
     </item>
     <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\libs\internal_impl-22.0.0.jar"
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\a07369ee0d827acccb111393509e6f2287b2848d\output\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.3"
-        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\internal_impl-22.0.0_23d33a9db8219cf66ad65356a902b9558d9c54cd.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-maps-7.5.0_a54507707f5e5e8a3d547ae09f2d9b0f1b06478e.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-panorama-7.5.0_ac2bcdc005b38e545bc90a864826347c1f600034.jar" />
-    </item>
-    <item
-        jar="C:\Users\mhessing\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\support-annotations-22.2.1_d55fc13d7eeaff32c0c62f105c28ed90a9650302.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-fitness-7.5.0_759a35bd24b1815becf4826dbe25c28b6d1b2a47.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-plus-7.5.0_fb650c07e68b3658c75e9aebae5a0ffabf427cd9.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="d405025c600055237c171a0bbabaa49d69696573">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-identity-7.5.0_e60c20ebc6a404e4c6410c1671892179aece3839.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-gcm-7.5.0_8dd0cedcaee2e9ace6c486a1f53962379eb19c94.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\internal_impl-22.2.1_b60a486f90465efad28d1e8c7b0d049e69d4d070.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-appstate-7.5.0_52cdbed51665b4971a7cd9716dfc6d97c8421f20.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-ads-7.5.0_694a5617d71135a48ab7b9d1d36197d007a49fac.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.android.support-mediarouter-v7-22.0.0_8d94922767824d399712821f38c47fbc8f2a9ad0.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-nearby-7.5.0_e1b1bf6dedb3bd973a00274c828fa0d7fc73b621.jar" />
-    </item>
-    <item
-        jar="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
+        optimize="true"
+        revision="25.0.0"
         sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
-        <dex dex="C:\develop\Git\Privat\AndroidHomeControl\app\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-drive-7.5.0_9fbb4ae4bfabc3ff13e6495ce5fc94642183ca1d.jar" />
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_541661d5fd5833eeb2be268fc2b4613b12a56eb9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\40ac1a1e7127488219f2e0a16cef1f4c86128f94\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_7513b62cc8378751327f30df6b01366250544d53.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\de8cde4c0c7a61ba2fd9bd7e9726351b13893844\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e7b35244f50663b3f8d150714bca9ecd7a290da1">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_875e1df5922c1f5aea3fa98d91256ded70c4807a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\33decaea3baa6e481267a9bfb41173bf73e79925\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1e98ef3f124bb7a11f8575f9ff5dfea330b61b6f">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_680c1a2e9ec8b2c4ecac25e8b910f4372126ce23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\16adad70d4d75a90beb7d21605486a0bcfbd468f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_a32008123ac84403a2cc03b81d0b4af22091c416.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\0eca52262ecb0fbb01416a971bda1cf3119c038c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_1e641a1dd7a3834b5abb685b73d8e4166c8ec32e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\6c5c340cfd2582d1f11b23fc4316dcc9dd50992b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_55e5e3459880a5a718bfcb84e42313061477941b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\130d79599aea54d879a61a4e316899f2acae8941\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_20d6eee8f7e1f6952a432ded56200ce537e4131a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\bd1833c9470efad1f0742332d78317a03ad5f102\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d405025c600055237c171a0bbabaa49d69696573">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_01efb17539679d823f13b0ec8602e7460b2ff3cb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\37bc835e25725c91bffe99a3155fe63b331f0a73\output\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_0ef4ee47b34324af905971b8fd9b223cf219d8d2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\57d0f2f31ceaac5e9ec1dc3afbe57178520be361\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_d808c30f56c72a50a2a14017b1ff62c0016c296b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\3b4d974ca622c23df2447ab4aedb398b3d2987b1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_6fa76a96c5db936472b76f4f917ef68aec9dab7c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\48328816c9b99c51832057b8807724374c5463b8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_bda5e1fb1ab7dbb6be809a6795ad0378412e2b05.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\66ac9f056a1bd93a12e72ae9733ec96695ac9014\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_33b0139d020184556bd3a812d7180e14c0898207.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\0a9e5d5063c84beada1a8d8e6ed7f91c86a3be64\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_1ed9547fbd7b3409aeac1db00d76fc458e946a63.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\f2bad6edb60b77876265db0e8db80013357102db\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_057758094aa3aa45f73bf2bf442b15b9c7c54e3a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\16adad70d4d75a90beb7d21605486a0bcfbd468f\output\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_653cfdf90575e9893e9312c7434c7591f2251ce6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\0162cef5f0a07c62a88163e6d2baa834be46af6e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_6f5988607fb5e043b33780872277259c32ef718a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\0a9e5d5063c84beada1a8d8e6ed7f91c86a3be64\output\jars\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0_267ceeead13f242fc65301bea3cb6da843e09325.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\6b39d257853f6b070ac0e2194f334909931c01eb\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_4562f66c83181b3514a2ff93a8ac3584fb3389e7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\9bb8a08001698955d1e8934b13bc2389b9d09101\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_b643c35a27d88029b266a2f56e23176e61f0a391.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\b1fc62b1ebef4ff00a61f7f338343747a7ade9b4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_b023938932c460efc22d379f6915deabd0a2f0dd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\149d36e43e93b910f921494a37476f3fc33a38c2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_636434756ec1c1c54fc0c722db8b3e69a097bc8b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\37bc835e25725c91bffe99a3155fe63b331f0a73\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_94597bb3768e2da6d23feaf7d4ec8ca76595d41c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\953f2433235d94bdc95309cd2c3c6014a491fa98\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="63ec6e9f4fe5482a7447d0f3091b8e543a02554c">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_8521e70c169b49c8f8978d9fef71414be03ac5d7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\27877c7ff0f5ef72c76df0322e4872f8cbb295d1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_7edf6bde2086878cd37b1afce567baab2d8a5412.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\d0628b562c2d0bdf6c09ea9ac6d4ce87a7ffd1b0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\classes_e2fca07aad6df7f9899e429bec95d025b2785711.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\mhessing\.android\build-cache\27877c7ff0f5ef72c76df0322e4872f8cbb295d1\output\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_223bd8b94f2fe7c68b562cd25f0aa8e8a95d2e04.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Android\SDK\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="C:\develop\maurice144\HomeControl.App\app\build\intermediates\pre-dexed\debug\support-annotations-24.2.1_9730464052524644672afc6b7c8178648df6cbb4.jar" />
     </item>
 
 </items>

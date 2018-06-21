@@ -64,7 +64,7 @@ public class CloudListenerService extends GcmListenerService {
     private void doorBell(Bundle data) {
         try {
             ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_RING, ToneGenerator.MAX_VOLUME);
-            tg.startTone(ToneGenerator.TONE_CDMA_MED_PBX_L,1500);
+            tg.startTone(ToneGenerator.TONE_CDMA_MED_PBX_L,1000);
         } catch (Exception e) {
             e.printStackTrace();
         }

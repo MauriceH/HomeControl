@@ -1,6 +1,8 @@
 package de.maurice144.homecontrol.Data;
 
+import android.graphics.Path;
 import android.os.Environment;
+import android.provider.ContactsContract;
 import android.util.Log;
 
 import org.json.JSONObject;
@@ -13,9 +15,6 @@ import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 import java.util.PriorityQueue;
 
-/**
- * Created by Maurice on 28.07.2015.
- */
 public class ControlStructureJsonFile {
 
     private static final String TAG = "ControlJsonFile";
@@ -65,6 +64,7 @@ public class ControlStructureJsonFile {
     }
 
     public void SaveFile() throws org.json.JSONException,java.io.IOException {
+
         File jsonFile = new File(dataDir(),FILE_NAME);
         FileWriter fw = new FileWriter(jsonFile);
         try {
@@ -84,7 +84,7 @@ public class ControlStructureJsonFile {
             Log.w(TAG, "Storage card not found " + sdcard);
             return null;
         }
-        File datadir = new File(sdcard, "MyApplication");
+        File datadir = new File(sdcard, "HomeConz/");
         if( !confirmDir(datadir) ) {
             // TODO: warning popup
             Log.w(TAG, "Unable to create " + datadir);
